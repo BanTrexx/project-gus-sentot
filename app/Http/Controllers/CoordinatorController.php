@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Coordinator;
+use App\Models\Village;
 
 class CoordinatorController extends Controller
 {
@@ -29,8 +30,51 @@ class CoordinatorController extends Controller
         ]);
     }
 
-    public function addCoordinator()
+    public function create()
     {
-        return view('pages.coordinator.addcoordinator');
+        return view('pages.coordinator.create', [
+            'villages' => Village::all()
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|unique:coordinators',
+            'nik' => 'required|max:16|unique:coordinators',
+            'address' => 'required',
+            'village_id' => 'required'
+        ]);
+
+        Coordinator::create($validatedData);
+        return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
+    }
+
+    public function destroy(Coordinator $coordinator)
+    {
+        // delete data
+    }
+
+    public function edit(Coordinator $coordinator)
+    {
+        return view('pages.coordinator.edit',[
+            'coordinator' => $coordinator,
+            'villages' => Village::all()
+        ]);
+    }
+
+    public function update(Request $request, Coordinator $coordinator)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'nik' => 'required|max:16',
+            'address' => 'required',
+            'village_id' => 'required'
+        ]);
+
+        Coordinator::where('id', $coordinator->id)
+                    ->update($validatedData);
+
+        return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil diubah');
     }
 }

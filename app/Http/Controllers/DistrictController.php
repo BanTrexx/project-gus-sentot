@@ -29,8 +29,43 @@ class DistrictController extends Controller
         ]);
     }
 
-    public function addDistrict()
+    public function create()
     {
-        return view('pages.district.adddistrict');
+        return view('pages.district.create');
+    }
+
+    public function store(Request $request) 
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|unique:districts'
+        ]);
+
+        District::create($validatedData);
+
+        return redirect('/district')->with('success', 'Data Kecamatan Berhasil ditambahkan');
+    }
+
+    public function destroy(District $district) 
+    {
+        // delete data here
+    }
+
+    public function edit(District $district)
+    {
+        return view('pages.district.edit', [
+            'district' => $district 
+        ]);
+    }
+
+    public function update(Request $request, District $district)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        District::where('id', $district->id)
+                ->update($validatedData);
+
+        return redirect('/district')->with('success', 'Data Kecamatan Berhasil diubah');
     }
 }

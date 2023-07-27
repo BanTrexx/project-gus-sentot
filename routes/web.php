@@ -28,15 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::controller(DistrictController::class)->group(function() {
-    Route::get('district', 'index');
-    Route::get('district/add', 'addDistrict');
-});
-Route::controller(VillageController::class)->group(function() {
-    Route::get('village', 'index');
-    Route::get('village/add', 'addVillage');
-});
-Route::controller(CoordinatorController::class)->group(function() {
-    Route::get('coordinator', 'index');
-    Route::get('coordinator/add', 'addCoordinator');
-});
+Route::resource('district', DistrictController::class);
+Route::resource('village', VillageController::class);
+Route::resource('coordinator', CoordinatorController::class);

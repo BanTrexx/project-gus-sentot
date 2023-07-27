@@ -9,9 +9,16 @@
 @section('content')
     <p>Welcome to coordinator page!</p>
 
-    <a href="/coordinator/add">
+    <a href="/coordinator/create">
         <button type="button" class="btn btn-primary mb-3">Tambah Data Koordinator</button>
     </a>
+
+    @if(session()->has('success'))
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle mr-2"></i>
+        {{ session('success') }}
+      </div>
+    @endif
 
     <table class="table">
         <thead class="thead-dark">
@@ -35,7 +42,9 @@
               <td>{{ $coordinator->village->name }}</td>
               <td>{{ $coordinator->address }}</td>
               <td>
-                <i class="far fa-edit" style="cursor: pointer;"></i>
+                <a href="/coordinator/{{ $coordinator->id }}/edit" style="color: black">
+                  <i class="far fa-edit" style="cursor: pointer;"></i>
+                </a>
               </td>
               <td>
                 <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>

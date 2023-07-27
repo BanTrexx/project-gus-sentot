@@ -9,8 +9,11 @@ class Village extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function district()
     {
         return $this->belongsTo(District::class);
+
     }
 }

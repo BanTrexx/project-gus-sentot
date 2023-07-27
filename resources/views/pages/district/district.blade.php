@@ -9,9 +9,16 @@
 @section('content')
     <p>Welcome to district page!</p>
 
-    <a href="/district/add">
+    <a href="/district/create">
         <button type="button" class="btn btn-primary mb-3">Tambah Data Kecamatan</button>
     </a>
+
+    @if(session()->has('success'))
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle mr-2"></i>
+        {{ session('success') }}
+      </div>
+    @endif
 
     <table class="table">
         <thead class="thead-dark">
@@ -29,10 +36,16 @@
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $district->name }}</td>
               <td>
-                <i class="far fa-edit" style="cursor: pointer;"></i>
+                <a href="/district/{{ $district->id }}/edit" style="color: black">
+                  <i class="far fa-edit" style="cursor: pointer;"></i>
+                </a>
               </td>
               <td>
-                <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>
+                <form action="#" method="">
+                  <button style="border: none; background: transparent;" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
+                    <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>
+                  </button>
+                </form>
               </td>
             </tr>
           @endforeach

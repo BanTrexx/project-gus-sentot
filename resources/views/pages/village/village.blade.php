@@ -9,9 +9,16 @@
 @section('content')
     <p>Welcome to village page!</p>
 
-    <a href="/village/add">
+    <a href="/village/create">
         <button type="button" class="btn btn-primary mb-3">Tambah Data Desa</button>
     </a>
+
+    @if(session()->has('success'))
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle mr-2"></i>
+        {{ session('success') }}
+      </div>
+    @endif
 
     <table class="table">
         <thead class="thead-dark">
@@ -31,7 +38,9 @@
               <td>{{ $village->name }}</td>
               <td>{{ $village->district->name }}</td>
               <td>
-                <i class="far fa-edit" style="cursor: pointer;"></i>
+                <a href="/village/{{ $village->id }}/edit" style="color: black">
+                  <i class="far fa-edit" style="cursor: pointer;"></i>
+                </a>
               </td>
               <td>
                 <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>
