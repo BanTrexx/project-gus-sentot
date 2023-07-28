@@ -326,6 +326,11 @@ return [
             'url'         => '/coordinator',
             'icon'        => 'fas fa-fw fa-hard-hat',
         ],
+        [
+            'text'        => 'Pendukung',
+            'url'         => '/supporter',
+            'icon'        => 'fas fa-fw fa-users',
+        ],
     ],
 
     /*
