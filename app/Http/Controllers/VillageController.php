@@ -37,7 +37,7 @@ class VillageController extends Controller
         ]);
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255|unique:villages',
@@ -51,7 +51,8 @@ class VillageController extends Controller
 
     public function destroy(Village $village)
     {
-        // delete data
+        $village->delete();
+        return redirect('/village')->with('success', 'Data Pendukung Berhasil dihapus');
     }
 
     public function edit(Village $village)

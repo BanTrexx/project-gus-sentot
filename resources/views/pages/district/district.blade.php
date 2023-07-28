@@ -27,11 +27,11 @@
             <th scope="col">Kecamatan</th>
             <th scope="col">Edit</th>
             <th scope="col">Hapus</th>
-          </tr>  
+          </tr>
         </thead>
         <tbody>
           @php($no = 1)
-          @foreach ($districts as $district)    
+          @foreach ($districts as $district)
             <tr>
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $district->name }}</td>
@@ -41,11 +41,11 @@
                 </a>
               </td>
               <td>
-                <form action="#" method="">
-                  <button style="border: none; background: transparent;" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
-                    <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>
-                  </button>
-                </form>
+                  <form action="{{ route('district.destroy', $district) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></button>
+                  </form>
               </td>
             </tr>
           @endforeach
