@@ -25,7 +25,7 @@ class VillageController extends Controller
      */
     public function index()
     {
-        return view('pages.village.village', [
+        return view('pages.village.index', [
             'villages' => Village::all()
         ]);
     }
