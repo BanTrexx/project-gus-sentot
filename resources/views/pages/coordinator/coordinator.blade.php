@@ -34,7 +34,7 @@
         </thead>
         <tbody>
           @php($no = 1)
-          @foreach ($coordinators as $coordinator)
+          @forelse ($coordinators as $coordinator)
             <tr>
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $coordinator->nik }}</td>
@@ -50,11 +50,15 @@
                   <form action="{{ route('coordinator.destroy', $coordinator) }}" method="POST">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></button>
+                      <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>
                   </form>
               </td>
             </tr>
-          @endforeach
+          @empty
+            <tr>
+                <td colspan="7" class="text-center">Data tidak tersedia.</td>
+            </tr>
+          @endforelse
         </tbody>
     </table>
 @stop

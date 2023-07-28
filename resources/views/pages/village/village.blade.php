@@ -32,25 +32,29 @@
         </thead>
         <tbody>
           @php($no = 1)
-          @foreach ($villages as $village)
-            <tr>
-              <th scope="row">{{ $no++ }}</th>
-              <td>{{ $village->name }}</td>
-              <td>{{ $village->district?->name }}</td>
-              <td>
-                <a href="/village/{{ $village->id }}/edit" style="color: black">
-                  <i class="far fa-edit" style="cursor: pointer;"></i>
-                </a>
-              </td>
-              <td>
-                  <form action="{{ route('village.destroy', $village) }}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></button>
-                  </form>
-              </td>
-            </tr>
-          @endforeach
+          @forelse ($villages as $village)
+              <tr>
+                <th scope="row">{{ $no++ }}</th>
+                <td>{{ $village->name }}</td>
+                <td>{{ $village->district?->name }}</td>
+                <td>
+                  <a href="/village/{{ $village->id }}/edit" style="color: black">
+                    <i class="far fa-edit" style="cursor: pointer;"></i>
+                  </a>
+                </td>
+                <td>
+                    <form action="{{ route('village.destroy', $village) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>
+                    </form>
+                </td>
+              </tr>
+          @empty
+              <tr>
+                  <td colspan="7" class="text-center">Data tidak tersedia.</td>
+              </tr>
+          @endforelse
         </tbody>
     </table>
 @stop
