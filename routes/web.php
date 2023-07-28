@@ -5,6 +5,7 @@ use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CoordinatorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SupporterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('district', DistrictController::class);
 Route::resource('village', VillageController::class);
 Route::resource('coordinator', CoordinatorController::class);
+Route::resource('supporter', SupporterController::class);
