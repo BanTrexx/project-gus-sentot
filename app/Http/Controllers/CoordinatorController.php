@@ -52,7 +52,8 @@ class CoordinatorController extends Controller
 
     public function destroy(Coordinator $coordinator)
     {
-        // delete data
+        $coordinator->delete();
+        return redirect('/coordinator')->with('success', 'Data Pendukung Berhasil dihapus');
     }
 
     public function edit(Coordinator $coordinator)

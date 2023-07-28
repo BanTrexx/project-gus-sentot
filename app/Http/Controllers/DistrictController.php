@@ -34,7 +34,7 @@ class DistrictController extends Controller
         return view('pages.district.create');
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255|unique:districts'
@@ -45,15 +45,16 @@ class DistrictController extends Controller
         return redirect('/district')->with('success', 'Data Kecamatan Berhasil ditambahkan');
     }
 
-    public function destroy(District $district) 
+    public function destroy(District $district)
     {
-        // delete data here
+        $district->delete();
+        return redirect('/district')->with('success', 'Data Pendukung Berhasil dihapus');
     }
 
     public function edit(District $district)
     {
         return view('pages.district.edit', [
-            'district' => $district 
+            'district' => $district
         ]);
     }
 
