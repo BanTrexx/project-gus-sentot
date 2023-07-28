@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SupporterRequest;
+use App\Models\Coordinator;
 use App\Models\Supporter;
 use Illuminate\Http\Request;
 
@@ -31,17 +33,14 @@ class SupporterController extends Controller
 
     public function create()
     {
-        return view('pages.supporter.create');
+        return view('pages.supporter.create', [
+            'coordinators' => Coordinator::all()
+        ]);
     }
 
-    public function store(Request $request)
+    public function store(SupporterRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255|unique:districts'
-        ]);
-
-        Supporter::create($validatedData);
-
+        Supporter::create($request->validated());
         return redirect('/supporter')->with('success', 'Data Pendukung Berhasil ditambahkan');
     }
 
@@ -53,19 +52,14 @@ class SupporterController extends Controller
     public function edit(Supporter $supporter)
     {
         return view('pages.supporter.edit', [
-            'supporter' => $supporter
+            'supporter' => $supporter,
+            'coordinators' => Coordinator::all()
         ]);
     }
 
-    public function update(Request $request, Supporter $supporter)
+    public function update(SupporterRequest $request, Supporter $supporter)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255'
-        ]);
-
-        Supporter::where('id', $supporter->id)
-            ->update($validatedData);
-
+        $supporter->update($request->validated());
         return redirect('/supporter')->with('success', 'Data Pendukung Berhasil diubah');
     }
 }

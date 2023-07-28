@@ -28,6 +28,7 @@
             <th scope="col">Nama</th>
             <th scope="col">Alamat</th>
             <th scope="col">DPT/TPS</th>
+            <th scope="col">Koordinator</th>
             <th scope="col">Edit</th>
             <th scope="col">Hapus</th>
         </tr>
@@ -41,8 +42,9 @@
                 <td>{{ $supporter->name }}</td>
                 <td>{{ $supporter->address }}</td>
                 <td>{{ $supporter->dpt_tps }}</td>
+                <td>{{ $supporter->coordinator->name }}</td>
                 <td>
-                    <a href="/village/{{ $village->id }}/edit" style="color: black">
+                    <a href="{{ route('supporter.edit', $supporter) }}" style="color: black">
                         <i class="far fa-edit" style="cursor: pointer;"></i>
                     </a>
                 </td>
