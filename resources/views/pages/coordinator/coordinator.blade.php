@@ -30,11 +30,11 @@
             <th scope="col">Alamat</th>
             <th scope="col">Edit</th>
             <th scope="col">Hapus</th>
-          </tr>  
+          </tr>
         </thead>
         <tbody>
           @php($no = 1)
-          @foreach ($coordinators as $coordinator)    
+          @foreach ($coordinators as $coordinator)
             <tr>
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $coordinator->nik }}</td>
@@ -47,7 +47,11 @@
                 </a>
               </td>
               <td>
-                <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>
+                  <form action="{{ route('coordinator.destroy', $coordinator) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></button>
+                  </form>
               </td>
             </tr>
           @endforeach

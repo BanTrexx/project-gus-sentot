@@ -28,11 +28,11 @@
             <th scope="col">Kecamatan</th>
             <th scope="col">Edit</th>
             <th scope="col">Hapus</th>
-          </tr>  
+          </tr>
         </thead>
         <tbody>
           @php($no = 1)
-          @foreach ($villages as $village)    
+          @foreach ($villages as $village)
             <tr>
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $village->name }}</td>
@@ -43,7 +43,11 @@
                 </a>
               </td>
               <td>
-                <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>
+                  <form action="{{ route('village.destroy', $village) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></button>
+                  </form>
               </td>
             </tr>
           @endforeach
