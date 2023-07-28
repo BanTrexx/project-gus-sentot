@@ -39,7 +39,7 @@
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $coordinator->nik }}</td>
               <td>{{ $coordinator->name }}</td>
-              <td>{{ $coordinator->village->name }}</td>
+              <td>{{ $coordinator->village?->name }}</td>
               <td>{{ $coordinator->address }}</td>
               <td>
                 <a href="/coordinator/{{ $coordinator->id }}/edit" style="color: black">

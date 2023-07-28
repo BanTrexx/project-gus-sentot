@@ -36,7 +36,7 @@
             <tr>
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $village->name }}</td>
-              <td>{{ $village->district->name }}</td>
+              <td>{{ $village->district?->name }}</td>
               <td>
                 <a href="/village/{{ $village->id }}/edit" style="color: black">
                   <i class="far fa-edit" style="cursor: pointer;"></i>
