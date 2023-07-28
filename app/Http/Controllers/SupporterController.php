@@ -46,7 +46,8 @@ class SupporterController extends Controller
 
     public function destroy(Supporter $supporter)
     {
-        // delete data here
+        $supporter->delete();
+        return redirect('/supporter')->with('success', 'Data Pendukung Berhasil diubah');
     }
 
     public function edit(Supporter $supporter)

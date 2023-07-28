@@ -49,7 +49,11 @@
                     </a>
                 </td>
                 <td>
-                    <i class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></i>
+                    <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer;"></button>
+                    </form>
                 </td>
             </tr>
         @empty
