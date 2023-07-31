@@ -3,7 +3,7 @@
 @section('title', 'Admin | Supporter')
 
 @section('content_header')
-    <h1>Ubah Data Supporter</h1>
+    <h1>Ubah Data Pendukung</h1>
 @stop
 
 @section('content')
@@ -57,7 +57,7 @@
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Tambah Desa</button>
+            <button type="submit" class="btn btn-primary">Ubah Pendukung</button>
         </form>
     </div>
 @stop
