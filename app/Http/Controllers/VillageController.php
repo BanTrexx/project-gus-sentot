@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Village;
+use App\Models\Coordinator;
+use App\Models\Supporter;
 use App\Models\District;
 
 class VillageController extends Controller
@@ -26,7 +28,10 @@ class VillageController extends Controller
     public function index()
     {
         return view('pages.village.index', [
-            'villages' => Village::all()
+            'villages' => [
+                'village' => Village::all(),
+                'coor_count' => Coordinator::where('village_id', Village::select('id'))->count()
+                ]
         ]);
     }
 

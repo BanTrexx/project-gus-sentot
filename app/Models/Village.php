@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Village extends Model
 {
@@ -11,7 +12,7 @@ class Village extends Model
 
     protected $guarded = ['id'];
 
-    public function district()
+    public function district(): BelongsTo
     {
         return $this->belongsTo(District::class);
 

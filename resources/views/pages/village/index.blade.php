@@ -26,17 +26,21 @@
             <th scope="col">No</th>
             <th scope="col">Desa</th>
             <th scope="col">Kecamatan</th>
+            <th scope="col">Jumlah Koordinator</th>
+            <th scope="col">Jumlah Pendukung</th>
             <th scope="col">Edit</th>
             <th scope="col">Hapus</th>
           </tr>
         </thead>
         <tbody>
           @php($no = 1)
-          @forelse ($villages as $village)
+          @forelse ($villages as $v)
               <tr>
                 <th scope="row">{{ $no++ }}</th>
-                <td>{{ $village->name }}</td>
-                <td>{{ $village->district?->name }}</td>
+                <td>{{ $v->$village->name }}</td>
+                <td>{{ $v->$village->district?->name }}</td>
+                <td>{{ $v->$coor_count }}</td>
+                <td>{{ $v->$coor_count }}</td>
                 <td>
                   <a href="/village/{{ $village->id }}/edit" style="color: black">
                     <i class="far fa-edit" style="cursor: pointer;"></i>
