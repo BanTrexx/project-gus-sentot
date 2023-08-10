@@ -28,10 +28,15 @@ class VillageController extends Controller
     public function index()
     {
         return view('pages.village.index', [
-            'villages' => [
-                'village' => Village::all(),
-                'coor_count' => Coordinator::where('village_id', Village::select('id'))->count()
-                ]
+            'villages' => Village::query()->chunkMap(function ($data) {
+                $supporterCount= $data->coordinators()->chunkMap(function ($coordinator) {
+                    return $coordinator->supporters()->count();
+                })->toArray();
+
+                $data->coordinator_count = $data->coordinators()->count();
+                $data->supporter_count = array_sum($supporterCount);
+                return $data;
+            })
         ]);
     }
 
