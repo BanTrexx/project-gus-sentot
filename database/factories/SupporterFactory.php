@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Coordinator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class SupporterFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'coordinator_id' => Coordinator::all()->random()->id,
+            'nik'            => fake()->nik(),
+            'name'           => fake()->name(),
+            'address'        => fake()->address(),
+            'dpt_tps'        => sprintf("%04s", $this->faker->numerify)
         ];
     }
 }

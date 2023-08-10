@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\District;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class VillageFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->city(),
+            'district_id' => District::all()->random()->id,
+            'name'        => fake()->city(),
         ];
     }
 }

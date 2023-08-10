@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Coordinator;
+use App\Models\District;
+use App\Models\Supporter;
+use App\Models\Village;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,13 +18,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+//         \App\Models\User::factory()->create([
+//             'name' => 'Test User',
+//             'email' => 'test@example.com',
+//         ]);
 
-        \App\Models\Coordinator::factory(9)->create();
-        \App\Models\District::factory(9)->create();
-        \App\Models\Village::factory(9)->create();
+        District::factory(9)->create();
+        Village::factory(9)->create();
+        Coordinator::factory(9)->create();
+        Supporter::factory(9)->create();
     }
 }

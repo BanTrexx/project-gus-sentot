@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Village;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,10 @@ class CoordinatorFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'nik' => fake()->nik(),
-            'address' => fake()->address()
+            'village_id' => Village::all()->random()->id,
+            'name'       => fake()->name(),
+            'nik'        => fake()->nik(),
+            'address'    => fake()->address()
         ];
     }
 }
