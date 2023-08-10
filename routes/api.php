@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

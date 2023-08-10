@@ -34,13 +34,13 @@
         </thead>
         <tbody>
           @php($no = 1)
-          @forelse ($villages as $v)
+          @forelse ($villages as $village)
               <tr>
                 <th scope="row">{{ $no++ }}</th>
-                <td>{{ $v->$village->name }}</td>
-                <td>{{ $v->$village->district?->name }}</td>
-                <td>{{ $v->$coor_count }}</td>
-                <td>{{ $v->$coor_count }}</td>
+                <td>{{ $village->name }}</td>
+                <td>{{ $village->district?->name }}</td>
+                <td>{{ $village->coordinator_count }}</td>
+                <td>{{ $village->supporter_count }}</td>
                 <td>
                   <a href="/village/{{ $village->id }}/edit" style="color: black">
                     <i class="far fa-edit" style="cursor: pointer;"></i>

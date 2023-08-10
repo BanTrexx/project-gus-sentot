@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Village;
 
 return new class extends Migration
 {
@@ -13,12 +14,11 @@ return new class extends Migration
     {
         Schema::create('coordinators', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('village_id')->nullable();
+            $table->foreignIdFor(Village::class)->nullable();
             $table->string('name');
             $table->string('nik', $length=16);
             $table->string('address');
             $table->timestamps();
-            $table->foreign('village_id')->references('id')->on('villages');
         });
     }
 
