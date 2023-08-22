@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Coordinator;
 use App\Models\District;
 use App\Models\Supporter;
+use App\Models\User;
 use App\Models\Village;
 use Illuminate\Database\Seeder;
 
@@ -16,16 +17,45 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
 
-//         \App\Models\User::factory()->create([
-//             'name' => 'Test User',
-//             'email' => 'test@example.com',
-//         ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'admin@example.com',
+        ]);
 
-        District::factory(9)->create();
-        Village::factory(9)->create();
-        Coordinator::factory(9)->create();
-        Supporter::factory(9)->create();
+
+        $originalList = [
+            'Bandarkedungmulyo',
+            'Bareng',
+            'Diwek',
+            'Gudo',
+            'Jogoroto',
+            'Jombang',
+            'Kabuh',
+            'Kesamben',
+            'Kudu',
+            'Megaluh',
+            'Mojoagung',
+            'Mojowarno',
+            'Ngoro',
+            'Ngusikan',
+            'Perak',
+            'Peterongan',
+            'Plandaan',
+            'Ploso',
+            'Sumobito',
+            'Tembelang',
+            'Wonosalam'
+        ];
+
+        $district = [];
+
+        foreach ($originalList as $name) {
+            $district[] = ['name' => $name];
+        }
+
+        District::factory()->createMany($district);
+
+
     }
 }
