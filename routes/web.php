@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\CoordinatorController;
 use Illuminate\Support\Facades\Route;
@@ -18,17 +19,14 @@ use App\Http\Controllers\SupporterController;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
-Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('district', DistrictController::class);
 Route::resource('village', VillageController::class);
 Route::resource('coordinator', CoordinatorController::class);
