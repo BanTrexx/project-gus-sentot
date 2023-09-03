@@ -30,7 +30,7 @@
             <th scope="col">DPT/TPS</th>
             <th scope="col">Koordinator</th>
             <th scope="col">Edit</th>
-            <th scope="col">Hapus</th>
+{{--            <th scope="col">Hapus</th>--}}
         </tr>
         </thead>
         <tbody>
@@ -48,13 +48,13 @@
                         <i class="far fa-edit" style="cursor: pointer;"></i>
                     </a>
                 </td>
-                <td>
-                    <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>
-                    </form>
-                </td>
+{{--                <td>--}}
+{{--                    <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">--}}
+{{--                        @csrf--}}
+{{--                        @method('DELETE')--}}
+{{--                        <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>--}}
+{{--                    </form>--}}
+{{--                </td>--}}
             </tr>
         @empty
             <tr>
