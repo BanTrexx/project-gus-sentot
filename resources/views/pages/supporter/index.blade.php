@@ -7,17 +7,16 @@
 @stop
 
 @section('content')
-    <p>Welcome to supporter page!</p>
 
     <a href="/supporter/create">
-        <button type="button" class="btn btn-primary mb-3">Tambah Data Pendukung</button>
+        <button type="button" class="btn btn-primary mb-3">Tambah Data Penduduk</button>
     </a>
 
     @if(session()->has('success'))
-      <div class="alert alert-success" role="alert">
-        <i class="fas fa-check-circle mr-2"></i>
-        {{ session('success') }}
-      </div>
+        <div class="alert alert-success" role="alert">
+            <i class="fas fa-check-circle mr-2"></i>
+            {{ session('success') }}
+        </div>
     @endif
 
     <table @if(count($supporters) > 0) id="myTable" @endif class="table">
@@ -30,7 +29,7 @@
             <th scope="col">DPT/TPS</th>
             <th scope="col">Koordinator</th>
             <th scope="col">Edit</th>
-{{--            <th scope="col">Hapus</th>--}}
+            {{--            <th scope="col">Hapus</th>--}}
         </tr>
         </thead>
         <tbody>
@@ -48,13 +47,13 @@
                         <i class="far fa-edit" style="cursor: pointer;"></i>
                     </a>
                 </td>
-{{--                <td>--}}
-{{--                    <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">--}}
-{{--                        @csrf--}}
-{{--                        @method('DELETE')--}}
-{{--                        <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>--}}
-{{--                    </form>--}}
-{{--                </td>--}}
+                {{--                <td>--}}
+                {{--                    <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">--}}
+                {{--                        @csrf--}}
+                {{--                        @method('DELETE')--}}
+                {{--                        <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>--}}
+                {{--                    </form>--}}
+                {{--                </td>--}}
             </tr>
         @empty
             <tr>
@@ -73,7 +72,7 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 
-    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
     <script>
         let table = new DataTable('#myTable');
