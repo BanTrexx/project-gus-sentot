@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
         ]);
 
-
         $originalList = [
             'Bandarkedungmulyo',
             'Bareng',

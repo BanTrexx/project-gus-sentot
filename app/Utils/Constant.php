@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Utils;
+
+class Constant
+{
+
+    static string $dptBody = "{findNikSidalih (nik:\":nik\",wilayah_id:0,token:\"03ADUVZwCDmpAKJ_iQvSsZTUWJS7g2eapWX2UFQMITYILEVt5run9DMlDqULjpVDCay2F-9P533PF_l67X8etgpiwlfqD0VyutoY0gp2RoeUNkYoeL3M-rs6i0QerAx0j1xr62a3TvWb_lsmOBjJw3g4ZfvPFahF_JYzIOKzQNxfRP2BABWe6LZN1T5V_WjAZ3WUmWL0DzehOGiL3KxfPn5ujxWGttPGAqYRsv2m6szQ9_KIAa_sySauHnXfNzzRogAKVqzmgc6VPLVYut3WbGKmQ40XucyH51e_VrBisKoLWDSaWLmS3Q9seSgvGjc0XXoQPHa6t2iCyZPFHPcV4E0VrJFQ4L8L_qXo2GZpyj4aqb3cLVSiKXZhad-QHsM5xUAW1YZcB0YIl9P_Qz5VOTPgkoHfX6wLhuj-AYuUQv-J6WG28Gl41WerxGw4wojs1IrXIfKURZhDlibSlw-q5QlA5ureOglu8cqlxGXtdrdBqfVB1pXc9hH6mgbqZ9_iqjQJYsZjfQ1gLLYLReYToscscKBSMnt7cIaV6SeZZZzvZhv91hXL7aoxI\",){nama,nik,nkk,jenis_kelamin,provinsi,kabupaten,kecamatan,kelurahan,tps}}\n";
+
+}

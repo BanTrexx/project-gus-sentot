@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SupporterRequest;
 use App\Models\Coordinator;
 use App\Models\Supporter;
+use App\Utils\DptUtils;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class SupporterController extends Controller
 {
@@ -22,16 +25,16 @@ class SupporterController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
         return view('pages.supporter.index', [
             'supporters' => Supporter::all()
         ]);
     }
 
-    public function create()
+    public function create(): Renderable
     {
         return view('pages.supporter.create', [
             'coordinators' => Coordinator::all()
@@ -40,8 +43,21 @@ class SupporterController extends Controller
 
     public function store(SupporterRequest $request)
     {
-        Supporter::create($request->validated());
-        return redirect('/supporter')->with('success', 'Data Pendukung Berhasil ditambahkan');
+        $dpt = DptUtils::find($request->get('nik'));
+
+        if ($dpt != null) {
+            $tps = sprintf("%s, %s, Kecamatan %s", $dpt->tps, $dpt->kelurahan, $dpt->kecamatan);
+            $data = $request->validated();
+            $data['dpt_tps'] = $tps;
+            $data['name'] = $dpt->nama;
+            Supporter::create($data);
+            return redirect('/supporter')->with('success', 'Data Pendukung Berhasil ditambahkan');
+        } else {
+            throw ValidationException::withMessages([
+                'nik' => ['Data DPT Tidak Di temukan'],
+            ]);
+        }
+
     }
 
     public function destroy(Supporter $supporter)

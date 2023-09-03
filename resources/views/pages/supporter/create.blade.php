@@ -13,29 +13,18 @@
         <form method="post" action="/supporter">
             @csrf
             <div class="form-group">
-                <label for="name">Nama Pendukung</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="silahkan input nama pendukung" required autofocus value="{{ old('name') }}">
-                @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="form-group">
                 <label for="nik">NIK</label>
-                <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required autofocus value="{{ old('nik') }}">
+                <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required
+                       autofocus value="{{ old('nik') }}">
                 @error('nik')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="dpt_tps">DPT/TPS</label>
-                <input type="text" class="form-control" id="dpt_tps" name="dpt_tps" placeholder="silahkan input DPT/TPS" required autofocus value="{{ old('dpt_tps') }}">
-                @error('dpt_tps')
-                <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
+
             <div class="form-group">
                 <label for="address">Alamat</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat pendukung" required autofocus value="{{ old('address') }}">
+                <input type="text" class="form-control" id="address" name="address"
+                       placeholder="silahkan input alamat pendukung" required autofocus value="{{ old('address') }}">
                 @error('address')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
