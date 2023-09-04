@@ -77,7 +77,7 @@
     <div>
         <p class="font-semibold">PENANGGUNG JAWAB</p>
         <p class="font-semibold"></p>
-        <p class="font-semibold">(1) ………………………………………</p>
+        <p class="font-semibold">(1) {{ $supporters->first()->name }}</p>
     </div>
 </div>
 
