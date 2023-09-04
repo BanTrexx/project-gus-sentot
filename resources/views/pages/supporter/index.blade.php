@@ -12,6 +12,10 @@
         <button type="button" class="btn btn-primary mb-3">Tambah Data Penduduk</button>
     </a>
 
+    <a href="{{ route('export.voter-list.index') }}" target="_blank">
+        <button type="button" class="btn btn-danger mb-3">Export PDF</button>
+    </a>
+
     @if(session()->has('success'))
         <div class="alert alert-success" role="alert">
             <i class="fas fa-check-circle mr-2"></i>
@@ -73,8 +77,14 @@
     <script> console.log('Hi!'); </script>
 
     <script src="cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         let table = new DataTable('#myTable');
+    </script>
+
+    <script>
+        const myModal = document.getElementById('myModal')
+        myModal.addEventListener('shown.bs.modal')
     </script>
 @stop

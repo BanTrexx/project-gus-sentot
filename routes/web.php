@@ -7,6 +7,7 @@ use App\Http\Controllers\CoordinatorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SupporterController;
+use App\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,6 @@ Route::resource('district', DistrictController::class);
 Route::resource('village', VillageController::class);
 Route::resource('coordinator', CoordinatorController::class);
 Route::resource('supporter', SupporterController::class);
+
+Route::get('export/voter-list', [ExportController::class, 'exportVoterList'])->name('export.voter-list.index');
+Route::post('export/voter-list', [ExportController::class, 'exportedVoterList'])->name('export.voter-list.store');
