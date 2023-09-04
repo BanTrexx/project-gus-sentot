@@ -32,4 +32,6 @@ Route::resource('district', DistrictController::class);
 Route::resource('village', VillageController::class);
 Route::resource('coordinator', CoordinatorController::class);
 Route::resource('supporter', SupporterController::class);
-Route::get('export/voter-list', [ExportController::class, 'exportVoterList']);
+
+Route::get('export/voter-list', [ExportController::class, 'exportVoterList'])->name('export.voter-list.index');
+Route::post('export/voter-list', [ExportController::class, 'exportedVoterList'])->name('export.voter-list.store');
