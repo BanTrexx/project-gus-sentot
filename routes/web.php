@@ -29,9 +29,9 @@ Route::get('/', function () {
 
 Route::prefix('coordinator')->name('coordinator.')->group(function () {
     Route::get('register', [CoordinatorAuthController::class, 'register'])->name('register');
-    Route::get('registered', [CoordinatorAuthController::class, 'registered'])->name('registered');
+    Route::post('registered', [CoordinatorAuthController::class, 'registered'])->name('registered');
     Route::get('login', [CoordinatorAuthController::class, 'login'])->name('login');
-    Route::get('loged', [CoordinatorAuthController::class, 'loged'])->name('loged');
+    Route::post('loged', [CoordinatorAuthController::class, 'loged'])->name('loged');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

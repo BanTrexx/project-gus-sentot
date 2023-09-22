@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CoordinatorRegisterRequest;
 use App\Models\Coordinator;
+use App\Models\Village;
 use App\Utils\DptUtils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class CoordinatorAuthController extends Controller
@@ -36,11 +38,16 @@ class CoordinatorAuthController extends Controller
         $dpt = DptUtils::find($request->get('nik'));
 
         if ($dpt != null) {
-            $data = $request->validated();
-            $data['name'] = $dpt->nama;
-            $data['address'] = $dpt->kelurahan . $data->kecamatan . $dpt->kabupaten;
-            Coordinator::create($data);
-            return redirect('/coordinator/login')->with('success', 'Data Berhasil ditambahkan. Silakan login');
+            $village = Village::query()->where('name', 'like', "%$dpt->kelurahan%")->first();
+
+            $validatedData = $request->validated();
+            $validatedData['name']       = $dpt->nama;
+            $validatedData['address']    = $dpt->alamat;
+            $validatedData['village_id'] = $village->id;
+            $validatedData['password']   = Hash::make($validatedData['password']);
+
+            Coordinator::create($validatedData);
+            return redirect('/coordinator/login')->with('success', 'Data Berhasil ditambahkan. Silakan login.');
         } else {
             throw ValidationException::withMessages([
                 'nik' => ['NIK tidak ditemukan'],

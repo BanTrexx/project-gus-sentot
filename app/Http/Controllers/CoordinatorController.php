@@ -6,6 +6,7 @@ use App\Utils\DptUtils;
 use Illuminate\Http\Request;
 use App\Models\Coordinator;
 use App\Models\Village;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class CoordinatorController extends Controller
@@ -43,7 +44,6 @@ class CoordinatorController extends Controller
     {
         $validatedData = $request->validate([
             'nik' => 'required|max:16|unique:coordinators',
-            'village_id' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:8'
         ]);
@@ -51,8 +51,13 @@ class CoordinatorController extends Controller
         $dpt = DptUtils::find($request->get('nik'));
 
         if ($dpt != null) {
-            $validatedData['name']    = $dpt->nama;
-            $validatedData['address'] = $dpt->alamat;
+            $village = Village::query()->where('name', 'like', "%$dpt->kelurahan%")->first();
+
+            $validatedData['name']       = $dpt->nama;
+            $validatedData['address']    = $dpt->alamat;
+            $validatedData['village_id'] = $village->id;
+            $validatedData['password']   = Hash::make($validatedData['password']);
+
             Coordinator::create($validatedData);
             return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
         } else {
@@ -81,8 +86,9 @@ class CoordinatorController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'nik' => 'required|max:16',
+            'email' => 'required|email',
             'address' => 'required',
-            'village_id' => 'required'
+            'village_id' => 'required',
         ]);
 
         Coordinator::where('id', $coordinator->id)

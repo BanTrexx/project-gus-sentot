@@ -22,6 +22,10 @@
             <input type="number" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" required value="{{ old('nik', $coordinator->nik) }}">
           </div>
           <div class="form-group">
+              <label for="address">Email</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="silahkan input email Koordinator" required value="{{ old('email') }}">
+          </div>
+          <div class="form-group">
               <label for="address">Alamat</label>
               <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat Koordinator" required value="{{ old('address', $coordinator->address) }}">
             </div>
@@ -42,7 +46,7 @@
       </form>
     </div>
 
-    
+
 @stop
 
 @section('css')

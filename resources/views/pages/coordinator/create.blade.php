@@ -28,19 +28,6 @@
               <label for="address">Konfirmasi Password</label>
               <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="silahkan input password Koordinator" required value="{{ old('password_confirmation') }}">
           </div>
-          <div class="form-group">
-              <label for="village_id">Desa</label>
-              <select class="form-control" id="village_id" name="village_id">
-                <option value="null">-- silahkan pilih desa --</option>
-                @foreach ($villages as $village)
-                  @if(old('village_id') == $village->id)
-                    <option value="{{ $village->id }}" selected>{{ $village->name }}</option>
-                  @else
-                    <option value="{{ $village->id }}">{{ $village->name }}</option>
-                  @endif
-                @endforeach
-              </select>
-          </div>
           <button type="submit" class="btn btn-primary">Tambah Koordinator</button>
       </form>
     </div>

@@ -5,9 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Coordinator Login') }}</div>
 
                 <div class="card-body">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{ route('coordinator.loged') }}">
                         @csrf
 
@@ -36,6 +42,12 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('coordinator.register') }}">Daftar</a>
                             </div>
                         </div>
 
