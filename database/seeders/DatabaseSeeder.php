@@ -9,6 +9,7 @@ use App\Models\Supporter;
 use App\Models\User;
 use App\Models\Village;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Http;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,39 +24,36 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
         ]);
 
-        $originalList = [
-            'Bandarkedungmulyo',
-            'Bareng',
-            'Diwek',
-            'Gudo',
-            'Jogoroto',
-            'Jombang',
-            'Kabuh',
-            'Kesamben',
-            'Kudu',
-            'Megaluh',
-            'Mojoagung',
-            'Mojowarno',
-            'Ngoro',
-            'Ngusikan',
-            'Perak',
-            'Peterongan',
-            'Plandaan',
-            'Ploso',
-            'Sumobito',
-            'Tembelang',
-            'Wonosalam'
-        ];
-
-        $district = [];
-
-        foreach ($originalList as $name) {
-            $district[] = ['name' => $name];
-        }
-
-        District::factory()->createMany($district);
+//        $originalList = [
+//            'Bandarkedungmulyo',
+//            'Bareng',
+//            'Diwek',
+//            'Gudo',
+//            'Jogoroto',
+//            'Jombang',
+//            'Kabuh',
+//            'Kesamben',
+//            'Kudu',
+//            'Megaluh',
+//            'Mojoagung',
+//            'Mojowarno',
+//            'Ngoro',
+//            'Ngusikan',
+//            'Perak',
+//            'Peterongan',
+//            'Plandaan',
+//            'Ploso',
+//            'Sumobito',
+//            'Tembelang',
+//            'Wonosalam'
+//        ];
+//
+//        $district = [];
+//
 
         $this->call([
+            DistrictSeeder::class,
+            VillageSeeder::class,
             CoordinatorSeeder::class,
         ]);
 

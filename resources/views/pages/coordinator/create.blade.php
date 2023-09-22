@@ -13,16 +13,8 @@
       <form method="post" action="/coordinator">
         @csrf
           <div class="form-group">
-            <label for="name">Nama Koordinator</label>
-            <input type="text" class="form-control" id="name" placeholder="silahkan input nama Koordinator" name="name" required autofocus value="{{ old('name') }}">
-          </div>
-          <div class="form-group">
             <label for="nik">NIK</label>
             <input type="number" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" required value="{{ old('nik') }}">
-          </div>
-          <div class="form-group">
-              <label for="address">Alamat</label>
-              <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat Koordinator" required value="{{ old('address') }}">
           </div>
           <div class="form-group">
               <label for="address">Email</label>

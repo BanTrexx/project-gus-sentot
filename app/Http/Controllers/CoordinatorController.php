@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Utils\DptUtils;
 use Illuminate\Http\Request;
 use App\Models\Coordinator;
 use App\Models\Village;
+use Illuminate\Validation\ValidationException;
 
 class CoordinatorController extends Controller
 {
@@ -40,16 +42,24 @@ class CoordinatorController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255|unique:coordinators',
             'nik' => 'required|max:16|unique:coordinators',
-            'address' => 'required',
             'village_id' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:8'
         ]);
 
-        Coordinator::create($validatedData);
-        return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
+        $dpt = DptUtils::find($request->get('nik'));
+
+        if ($dpt != null) {
+            $validatedData['name']    = $dpt->nama;
+            $validatedData['address'] = $dpt->alamat;
+            Coordinator::create($validatedData);
+            return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
+        } else {
+            throw ValidationException::withMessages([
+                'nik' => ['NIK tidak ditemukan'],
+            ]);
+        }
     }
 
     public function destroy(Coordinator $coordinator)
