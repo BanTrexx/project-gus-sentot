@@ -55,6 +55,9 @@ class DatabaseSeeder extends Seeder
 
         District::factory()->createMany($district);
 
+        $this->call([
+            CoordinatorSeeder::class,
+        ]);
 
     }
 }

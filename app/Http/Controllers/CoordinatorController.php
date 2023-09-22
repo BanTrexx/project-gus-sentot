@@ -43,7 +43,9 @@ class CoordinatorController extends Controller
             'name' => 'required|max:255|unique:coordinators',
             'nik' => 'required|max:16|unique:coordinators',
             'address' => 'required',
-            'village_id' => 'required'
+            'village_id' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8'
         ]);
 
         Coordinator::create($validatedData);

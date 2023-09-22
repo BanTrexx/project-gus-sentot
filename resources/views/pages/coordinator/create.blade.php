@@ -23,7 +23,19 @@
           <div class="form-group">
               <label for="address">Alamat</label>
               <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat Koordinator" required value="{{ old('address') }}">
-            </div>
+          </div>
+          <div class="form-group">
+              <label for="address">Email</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="silahkan input email Koordinator" required value="{{ old('email') }}">
+          </div>
+          <div class="form-group">
+              <label for="address">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="silahkan input password Koordinator" required value="{{ old('password') }}">
+          </div>
+          <div class="form-group">
+              <label for="address">Konfirmasi Password</label>
+              <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="silahkan input password Koordinator" required value="{{ old('password_confirmation') }}">
+          </div>
           <div class="form-group">
               <label for="village_id">Desa</label>
               <select class="form-control" id="village_id" name="village_id">
@@ -41,7 +53,7 @@
       </form>
     </div>
 
-    
+
 @stop
 
 @section('css')

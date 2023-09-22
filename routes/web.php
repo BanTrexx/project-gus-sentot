@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SupporterController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\Auth\CoordinatorAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,13 @@ Auth::routes();
 
 Route::get('/', function () {
     return redirect('/login');
+});
+
+Route::prefix('coordinator')->name('coordinator.')->group(function () {
+    Route::get('register', [CoordinatorAuthController::class, 'register'])->name('register');
+    Route::get('registered', [CoordinatorAuthController::class, 'registered'])->name('registered');
+    Route::get('login', [CoordinatorAuthController::class, 'login'])->name('login');
+    Route::get('loged', [CoordinatorAuthController::class, 'loged'])->name('loged');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

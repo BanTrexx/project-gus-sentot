@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('nik', $length=16);
             $table->string('address');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }

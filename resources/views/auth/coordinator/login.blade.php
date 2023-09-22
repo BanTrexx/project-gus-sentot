@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('coordinator.loged') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -50,14 +50,6 @@
 {{--                                </div>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <a href="">Login Koordinator</a>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">

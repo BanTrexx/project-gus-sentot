@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coordinator;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +41,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+//    public function login(Request $request)
+//    {
+//        $user = User::query()->where('email', $request->email)->first();
+//        $coordinator = Coordinator::query()->where('email', $request->email)->first();
+//
+//        if (Hash::check($request->password, $user->password)) {
+//            return $this->guard()->attempt(
+//                $this->credentials($request), $request->has('remember')
+//            );
+//        }
+//
+//        if (Hash::check($request->password, $coordinator->password)) {
+//            return $this->guard()->attempt(
+//                $this->credentials($request), $request->has('remember')
+//            );
+//        }
+//
+//        return  false;
+//    }
 }
