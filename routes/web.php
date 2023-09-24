@@ -28,8 +28,8 @@ Route::get('/', function () {
 });
 
 //Route::prefix('coordinator')->name('coordinator.')->group(function () {
-//    Route::get('register', [CoordinatorAuthController::class, 'register'])->name('register');
-//    Route::post('registered', [CoordinatorAuthController::class, 'registered'])->name('registered');
+    Route::get('register/coordinator', [CoordinatorAuthController::class, 'register'])->name('register');
+    Route::post('registered/coordinator', [CoordinatorAuthController::class, 'registered'])->name('registered');
 ////    Route::post('login', [CoordinatorAuthController::class, 'login'])->name('login');
 ////    Route::get('login', [CoordinatorAuthController::class, 'showLoginForm'])->name('login');
 //
