@@ -15,8 +15,7 @@ class DistrictController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(PermissionMiddleware::class . ':edit')->only('edit');
-        $this->middleware(PermissionMiddleware::class . ':edit')->only('update');
+        $this->middleware(PermissionMiddleware::class . ':edit')->only(['edit', 'update']);
     }
 
     /**
