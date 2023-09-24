@@ -27,14 +27,9 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-//Route::prefix('coordinator')->name('coordinator.')->group(function () {
-    Route::get('register/coordinator', [CoordinatorAuthController::class, 'register'])->name('register');
-    Route::post('registered/coordinator', [CoordinatorAuthController::class, 'registered'])->name('registered');
-////    Route::post('login', [CoordinatorAuthController::class, 'login'])->name('login');
-////    Route::get('login', [CoordinatorAuthController::class, 'showLoginForm'])->name('login');
-//
-////    Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth.coordinator');
-//});
+
+Route::get('register/coordinator', [CoordinatorAuthController::class, 'register'])->name('register.coordinator');
+Route::post('register/coordinator', [CoordinatorAuthController::class, 'registered'])->name('register.coordinator');
 
 
 Route::middleware('auth.multiple')->group(function () {

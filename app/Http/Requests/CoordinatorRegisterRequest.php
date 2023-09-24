@@ -14,9 +14,9 @@ class CoordinatorRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nik'      => 'required',
+            'nik'      => 'required|string|unique:coordinators,nik',
             'email'    => 'required|email|unique:coordinators,email',
-            'password' => 'required|confirmed|min:8',
+            'password' => 'required|string|confirmed|min:8',
         ];
     }
 }
