@@ -6,31 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CoordinatorRegisterRequest;
 use App\Models\Coordinator;
 use App\Models\Village;
+use App\Providers\RouteServiceProvider;
 use App\Utils\DptUtils;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\Auth\LoginController as DefaultLoginController;
 
 class CoordinatorAuthController extends Controller
 {
-    public function login()
-    {
-        return view('auth.coordinator.login');
-    }
-
     public function register()
     {
         return view('auth.coordinator.register');
-    }
-
-    public function loged(Request $request)
-    {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended('/dashboard');
-        }
-
-        return redirect()->back();
     }
 
     public function registered(CoordinatorRegisterRequest $request)

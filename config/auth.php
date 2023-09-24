@@ -107,13 +107,6 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-
-        'coordinators' => [
-            'provider' => 'coordinators',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
     ],
 
     /*

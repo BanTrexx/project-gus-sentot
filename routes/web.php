@@ -27,19 +27,24 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::prefix('coordinator')->name('coordinator.')->group(function () {
-    Route::get('register', [CoordinatorAuthController::class, 'register'])->name('register');
-    Route::post('registered', [CoordinatorAuthController::class, 'registered'])->name('registered');
-    Route::get('login', [CoordinatorAuthController::class, 'login'])->name('login');
-    Route::post('loged', [CoordinatorAuthController::class, 'loged'])->name('loged');
+//Route::prefix('coordinator')->name('coordinator.')->group(function () {
+//    Route::get('register', [CoordinatorAuthController::class, 'register'])->name('register');
+//    Route::post('registered', [CoordinatorAuthController::class, 'registered'])->name('registered');
+////    Route::post('login', [CoordinatorAuthController::class, 'login'])->name('login');
+////    Route::get('login', [CoordinatorAuthController::class, 'showLoginForm'])->name('login');
+//
+////    Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth.coordinator');
+//});
+
+
+Route::middleware('auth.multiple')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::resource('district', DistrictController::class);
+    Route::resource('village', VillageController::class);
+    Route::resource('coordinator', CoordinatorController::class);
+    Route::resource('supporter', SupporterController::class);
+
+    Route::get('export/voter-list', [ExportController::class, 'exportVoterList'])->name('export.voter-list.index');
+    Route::post('export/voter-list', [ExportController::class, 'exportedVoterList'])->name('export.voter-list.store');
 });
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::resource('district', DistrictController::class);
-Route::resource('village', VillageController::class);
-Route::resource('coordinator', CoordinatorController::class);
-Route::resource('supporter', SupporterController::class);
-
-Route::get('export/voter-list', [ExportController::class, 'exportVoterList'])->name('export.voter-list.index');
-Route::post('export/voter-list', [ExportController::class, 'exportedVoterList'])->name('export.voter-list.store');

@@ -13,7 +13,9 @@ class Coordinator extends Authenticatable
 {
     use HasFactory, HasRoles;
 
-    protected $guarded = ['id'];
+    protected $guard = 'coordinator';
+
+    protected $guarded = [];
 
     protected $hidden = ['password'];
 
@@ -25,5 +27,10 @@ class Coordinator extends Authenticatable
     public function supporters(): HasMany
     {
         return $this->hasMany(Supporter::class);
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
     }
 }
