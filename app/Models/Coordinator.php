@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
 class Coordinator extends Authenticatable
 {
-    use HasFactory, HasRoles;
+    use HasFactory, HasRoles, HasPermissions;
 
-    protected $guard = 'coordinator';
+    protected $guard_name = 'web';
 
     protected $guarded = [];
 

@@ -74,6 +74,6 @@ class LoginController extends Controller
         if (Auth::guard('web')->check())  Auth::guard('web')->logout();
         if (Auth::guard('coordinator')->check())  Auth::guard('coordinator')->logout();
 
-        return redirect($this->redirectTo);
+        return redirect('/login');
     }
 }

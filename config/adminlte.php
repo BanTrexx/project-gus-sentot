@@ -312,6 +312,11 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text'        => 'Dashboard',
+            'url'         => '/home',
+            'icon'        => 'fas fa-fw fa-home',
+        ],
+        [
             'text'        => 'Kecamatan',
             'url'         => '/district',
             'icon'        => 'fas fa-fw fa-city',

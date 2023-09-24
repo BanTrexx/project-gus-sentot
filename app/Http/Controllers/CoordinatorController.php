@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CoordinatorCannotAccess;
 use App\Utils\DptUtils;
 use Illuminate\Http\Request;
 use App\Models\Coordinator;
@@ -18,7 +19,8 @@ class CoordinatorController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware(CoordinatorCannotAccess::class)->only('edit');
+        $this->middleware(CoordinatorCannotAccess::class)->only('update');
     }
 
     /**

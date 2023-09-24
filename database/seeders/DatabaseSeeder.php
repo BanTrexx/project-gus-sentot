@@ -19,10 +19,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+        $this->call([
+            PermissionSeeder::class,
+            DistrictSeeder::class,
+            VillageSeeder::class,
+            CoordinatorSeeder::class,
+        ]);
+
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'admin@example.com',
-        ]);
+        ])->assignRole(['admin']);
 
 //        $originalList = [
 //            'Bandarkedungmulyo',
@@ -50,12 +57,6 @@ class DatabaseSeeder extends Seeder
 //
 //        $district = [];
 //
-
-        $this->call([
-            DistrictSeeder::class,
-            VillageSeeder::class,
-            CoordinatorSeeder::class,
-        ]);
 
     }
 }

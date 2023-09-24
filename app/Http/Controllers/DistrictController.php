@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\PermissionMiddleware;
 use Illuminate\Http\Request;
 use App\Models\District;
 
@@ -14,7 +15,8 @@ class DistrictController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware(PermissionMiddleware::class . ':edit')->only('edit');
+        $this->middleware(PermissionMiddleware::class . ':edit')->only('update');
     }
 
     /**

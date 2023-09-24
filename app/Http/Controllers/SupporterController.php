@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CoordinatorCannotAccess;
 use App\Http\Requests\SupporterRequest;
 use App\Models\Coordinator;
 use App\Models\Supporter;
@@ -19,7 +20,8 @@ class SupporterController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware(CoordinatorCannotAccess::class)->only('edit');
+        $this->middleware(CoordinatorCannotAccess::class)->only('update');
     }
 
     /**

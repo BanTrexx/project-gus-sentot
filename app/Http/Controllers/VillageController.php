@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CoordinatorCannotAccess;
 use Illuminate\Http\Request;
 use App\Models\Village;
 use App\Models\Coordinator;
@@ -17,7 +18,8 @@ class VillageController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware(CoordinatorCannotAccess::class)->only('edit');
+        $this->middleware(CoordinatorCannotAccess::class)->only('update');
     }
 
     /**

@@ -24,7 +24,7 @@ use App\Http\Controllers\Auth\CoordinatorAuthController;
 Auth::routes();
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect('/home');
 });
 
 
