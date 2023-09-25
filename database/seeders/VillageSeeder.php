@@ -21,7 +21,7 @@ class VillageSeeder extends Seeder
             $village = Http::get(sprintf('https://www.emsifa.com/api-wilayah-indonesia/api/villages/%s.json', $districtItem->id));
             foreach ($village->json() as $data) {
                 $villages[] = [
-                    'district_id'   => $data['id'],
+                    'district_id'   => $data['district_id'],
                     'name'          => $data['name']
                 ];
             }

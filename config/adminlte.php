@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin Gus Sentot</b>',
+    'logo' => '<b>Admin ERP Campaign</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'd-none',
     'logo_img_xl' => null,
@@ -314,7 +314,7 @@ return [
         [
             'text'        => 'Dashboard',
             'url'         => '/home',
-            'icon'        => 'fas fa-fw fa-home',
+            'icon'        => 'fas fa-chart-line',
         ],
         [
             'text'        => 'Kecamatan',
@@ -490,5 +490,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
