@@ -32,7 +32,9 @@
             <th scope="col">Alamat</th>
             <th scope="col">DPT/TPS</th>
             <th scope="col">Koordinator</th>
-            <th scope="col">Edit</th>
+            @can('edit')
+                <th scope="col">Edit</th>
+            @endcan
             {{--            <th scope="col">Hapus</th>--}}
         </tr>
         </thead>
@@ -46,11 +48,13 @@
                 <td>{{ $supporter->address }}</td>
                 <td>{{ $supporter->dpt_tps }}</td>
                 <td>{{ $supporter->coordinator->name }}</td>
-                <td>
-                    <a href="{{ route('supporter.edit', $supporter) }}" style="color: black">
-                        <i class="far fa-edit" style="cursor: pointer;"></i>
-                    </a>
-                </td>
+                @can('edit')
+                    <td>
+                        <a href="{{ route('supporter.edit', $supporter) }}" style="color: black">
+                            <i class="far fa-edit" style="cursor: pointer;"></i>
+                        </a>
+                    </td>
+                @endcan
                 {{--                <td>--}}
                 {{--                    <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">--}}
                 {{--                        @csrf--}}

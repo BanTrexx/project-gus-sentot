@@ -28,7 +28,9 @@
             <th scope="col">Kecamatan</th>
             <th scope="col">Jumlah Koordinator</th>
             <th scope="col">Jumlah Pendukung</th>
-            <th scope="col">Edit</th>
+              @can('edit')
+                  <th scope="col">Edit</th>
+              @endcan
             <th scope="col">Hapus</th>
           </tr>
         </thead>
@@ -41,11 +43,13 @@
                 <td>{{ $village->district?->name }}</td>
                 <td>{{ $village->coordinator_count }}</td>
                 <td>{{ $village->supporter_count }}</td>
-                <td>
-                  <a href="/village/{{ $village->id }}/edit" style="color: black">
-                    <i class="far fa-edit" style="cursor: pointer;"></i>
-                  </a>
-                </td>
+                  @can('edit')
+                      <td>
+                          <a href="/village/{{ $village->id }}/edit" style="color: black">
+                              <i class="far fa-edit" style="cursor: pointer;"></i>
+                          </a>
+                      </td>
+                  @endcan
                 <td>
                     <form action="{{ route('village.destroy', $village) }}" method="POST">
                         @csrf

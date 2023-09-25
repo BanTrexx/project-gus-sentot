@@ -25,7 +25,9 @@
           <tr>
             <th scope="col">No</th>
             <th scope="col">Kecamatan</th>
-            <th scope="col">Edit</th>
+              @can('edit')
+                  <th scope="col">Edit</th>
+              @endcan
             <th scope="col">Hapus</th>
           </tr>
         </thead>
@@ -35,11 +37,13 @@
             <tr>
               <th scope="row">{{ $no++ }}</th>
               <td>{{ $district->name }}</td>
-              <td>
-                <a href="/district/{{ $district->id }}/edit" style="color: black">
-                  <i class="far fa-edit" style="cursor: pointer;"></i>
-                </a>
-              </td>
+                @can('edit')
+                    <td>
+                        <a href="/district/{{ $district->id }}/edit" style="color: black">
+                            <i class="far fa-edit" style="cursor: pointer;"></i>
+                        </a>
+                    </td>
+                @endcan
               <td>
                   <form action="{{ route('district.destroy', $district) }}" method="POST">
                       @csrf
