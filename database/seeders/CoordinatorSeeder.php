@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Coordinator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class CoordinatorSeeder extends Seeder
 {
@@ -12,6 +14,13 @@ class CoordinatorSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Coordinator::create([
+            'village_id' => 1,
+            'name' => 'Sukadi',
+            'nik' => 'sdjkfbsdjhfvdf',
+            'address' => 'kjsfbkdfds',
+            'email' => 'coordinator@example.com',
+            'password' => Hash::make('password')
+        ]);
     }
 }

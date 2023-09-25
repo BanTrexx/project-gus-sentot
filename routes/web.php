@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SupporterController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\Auth\CoordinatorAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +24,22 @@ use App\Http\Controllers\ExportController;
 Auth::routes();
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect('/home');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('district', DistrictController::class);
-Route::resource('village', VillageController::class);
-Route::resource('coordinator', CoordinatorController::class);
-Route::resource('supporter', SupporterController::class);
+Route::get('register/coordinator', [CoordinatorAuthController::class, 'register'])->name('register.coordinator');
+Route::post('register/coordinator', [CoordinatorAuthController::class, 'registered'])->name('register.coordinator');
 
-Route::get('export/voter-list', [ExportController::class, 'exportVoterList'])->name('export.voter-list.index');
-Route::post('export/voter-list', [ExportController::class, 'exportedVoterList'])->name('export.voter-list.store');
+
+Route::middleware('auth.multiple')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::resource('district', DistrictController::class);
+    Route::resource('village', VillageController::class);
+    Route::resource('coordinator', CoordinatorController::class);
+    Route::resource('supporter', SupporterController::class);
+
+    Route::get('export/voter-list', [ExportController::class, 'exportVoterList'])->name('export.voter-list.index');
+    Route::post('export/voter-list', [ExportController::class, 'exportedVoterList'])->name('export.voter-list.store');
+});

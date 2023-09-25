@@ -28,7 +28,9 @@
             <th scope="col">Nama</th>
             <th scope="col">Desa</th>
             <th scope="col">Alamat</th>
-            <th scope="col">Edit</th>
+              @can('edit')
+                  <th scope="col">Edit</th>
+              @endcan
             <th scope="col">Hapus</th>
           </tr>
         </thead>
@@ -41,11 +43,13 @@
               <td>{{ $coordinator->name }}</td>
               <td>{{ $coordinator->village?->name }}</td>
               <td>{{ $coordinator->address }}</td>
-              <td>
-                <a href="/coordinator/{{ $coordinator->id }}/edit" style="color: black">
-                  <i class="far fa-edit" style="cursor: pointer;"></i>
-                </a>
-              </td>
+                @can('edit')
+                    <td>
+                        <a href="/coordinator/{{ $coordinator->id }}/edit" style="color: black">
+                            <i class="far fa-edit" style="cursor: pointer;"></i>
+                        </a>
+                    </td>
+                @endcan
               <td>
                   <form action="{{ route('coordinator.destroy', $coordinator) }}" method="POST">
                       @csrf

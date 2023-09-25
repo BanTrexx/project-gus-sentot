@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\PermissionMiddleware;
 use App\Http\Requests\SupporterRequest;
 use App\Models\Coordinator;
 use App\Models\Supporter;
@@ -19,7 +20,7 @@ class SupporterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(PermissionMiddleware::class . ':edit')->only(['edit', 'update']);
     }
 
     /**

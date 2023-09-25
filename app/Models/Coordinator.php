@@ -6,12 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasPermissions;
+use Spatie\Permission\Traits\HasRoles;
 
-class Coordinator extends Model
+class Coordinator extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasRoles, HasPermissions;
 
-    protected $guarded = ['id'];
+    protected $guard_name = 'web';
+
+    protected $guarded = [];
+
+    protected $hidden = ['password'];
 
     public function village(): BelongsTo
     {
@@ -21,5 +28,10 @@ class Coordinator extends Model
     public function supporters(): HasMany
     {
         return $this->hasMany(Supporter::class);
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
     }
 }

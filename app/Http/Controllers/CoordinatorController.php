@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\PermissionMiddleware;
+use App\Utils\DptUtils;
 use Illuminate\Http\Request;
 use App\Models\Coordinator;
 use App\Models\Village;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class CoordinatorController extends Controller
 {
@@ -15,7 +19,7 @@ class CoordinatorController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(PermissionMiddleware::class . ':edit')->only(['edit', 'update']);
     }
 
     /**
@@ -40,14 +44,28 @@ class CoordinatorController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255|unique:coordinators',
             'nik' => 'required|max:16|unique:coordinators',
-            'address' => 'required',
-            'village_id' => 'required'
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8'
         ]);
 
-        Coordinator::create($validatedData);
-        return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
+        $dpt = DptUtils::find($request->get('nik'));
+
+        if ($dpt != null) {
+            $village = Village::query()->where('name', 'like', "%$dpt->kelurahan%")->first();
+
+            $validatedData['name']       = $dpt->nama;
+            $validatedData['address']    = $dpt->alamat;
+            $validatedData['village_id'] = $village->id;
+            $validatedData['password']   = Hash::make($validatedData['password']);
+
+            Coordinator::create($validatedData);
+            return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
+        } else {
+            throw ValidationException::withMessages([
+                'nik' => ['NIK tidak ditemukan'],
+            ]);
+        }
     }
 
     public function destroy(Coordinator $coordinator)
@@ -69,8 +87,9 @@ class CoordinatorController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'nik' => 'required|max:16',
+            'email' => 'required|email',
             'address' => 'required',
-            'village_id' => 'required'
+            'village_id' => 'required',
         ]);
 
         Coordinator::where('id', $coordinator->id)

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\PermissionMiddleware;
 use Illuminate\Http\Request;
 use App\Models\Village;
-use App\Models\Coordinator;
-use App\Models\Supporter;
 use App\Models\District;
 
 class VillageController extends Controller
@@ -17,7 +16,7 @@ class VillageController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(PermissionMiddleware::class . ':edit')->only(['edit', 'update']);
     }
 
     /**
