@@ -16,10 +16,15 @@ class PermissionMiddleware
      */
     public function handle(Request $request, Closure $next, $permission): Response
     {
+        if (Auth::guard('web')->check()) {
+            $auth = Auth::guard('web');
+        } else {
+            $auth = Auth::guard('coordinator');
+        }
 
-        if (Auth::guard('web')->user()->hasPermissionTo('edit'))  return $next($request);
-        if (Auth::guard('coordinator')->user()->hasPermissionTo('edit'))  return $next($request);
+        if ($auth->user()->hasPermissionTo('edit'))  return $next($request);
+        if ($auth->user()->hasPermissionTo('edit'))  return $next($request);
 
-        return $next($request);
+        abort(403);
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Supporter;
 use App\Models\User;
 use App\Models\Village;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
 class DatabaseSeeder extends Seeder
@@ -26,9 +27,10 @@ class DatabaseSeeder extends Seeder
             CoordinatorSeeder::class,
         ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'admin@example.com',
+        User::create([
+            'name'     => 'Admin',
+            'email'    => 'admin@example.com',
+            'password' => Hash::make('password')
         ])->assignRole(['admin']);
 
 //        $originalList = [
