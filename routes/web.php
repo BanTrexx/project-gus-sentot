@@ -28,8 +28,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('register/coordinator', [CoordinatorAuthController::class, 'register'])->name('register.coordinator');
-Route::post('register/coordinator', [CoordinatorAuthController::class, 'registered'])->name('register.coordinator');
+//Route::get('register/coordinator', [CoordinatorAuthController::class, 'register'])->name('register.coordinator');
+//Route::post('register/coordinator', [CoordinatorAuthController::class, 'registered'])->name('register.coordinator');
 
 
 Route::middleware('auth.multiple')->group(function () {
