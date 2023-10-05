@@ -332,6 +332,11 @@ return [
             'icon'        => 'fas fa-fw fa-hard-hat',
         ],
         [
+            'text'        => 'Penanggung Jawab',
+            'url'         => '/responsible',
+            'icon'        => 'fas fa-fw fa-user-tie',
+        ],
+        [
             'text'        => 'Penduduk',
             'url'         => '/supporter',
             'icon'        => 'fas fa-fw fa-users',

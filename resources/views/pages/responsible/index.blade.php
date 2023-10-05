@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Admin | Supporter')
+@section('title', 'Admin | Responsible')
 
 @section('content_header')
     <h1>Responsible Page</h1>
@@ -8,12 +8,8 @@
 
 @section('content')
 
-    <a href="/supporter/create">
-        <button type="button" class="btn btn-primary mb-3">Tambah Data Penanggungjawab</button>
-    </a>
-
-    <a href="{{ route('export.voter-list.index') }}" target="_blank">
-        <button type="button" class="btn btn-danger mb-3">Export PDF</button>
+    <a href="/responsible/create">
+        <button type="button" class="btn btn-primary mb-3">Tambah Data</button>
     </a>
 
     @if(session()->has('success'))
@@ -23,40 +19,36 @@
         </div>
     @endif
 
-    <table @if(count($supporters) > 0) id="myTable" @endif class="table">
+    <table @if(count($responsibles) > 0) id="myTable" @endif class="table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">No</th>
             <th scope="col">NIK</th>
             <th scope="col">Nama</th>
             <th scope="col">Alamat</th>
-            <th scope="col">DPT/TPS</th>
             <th scope="col">Koordinator</th>
-            @can('edit')
-                <th scope="col">Edit</th>
-            @endcan
+            <th scope="col">Edit</th>
             <th scope="col">Hapus</th>
         </tr>
         </thead>
         <tbody>
         @php($no = 1)
-        @forelse ($supporters as $supporter)
+        @forelse ($responsibles as $responsible)
             <tr>
                 <th scope="row">{{ $no++ }}</th>
-                <td>{{ $supporter->nik }}</td>
-                <td>{{ $supporter->name }}</td>
-                <td>{{ $supporter->address }}</td>
-                <td>{{ $supporter->dpt_tps }}</td>
-                <td>{{ $supporter->coordinator->name }}</td>
+                <td>{{ $responsible->nik }}</td>
+                <td>{{ $responsible->name }}</td>
+                <td>{{ $responsible->address }}</td>
+                <td>{{ $responsible->coordinator->name }}</td>
                 @can('edit')
                     <td>
-                        <a href="{{ route('supporter.edit', $supporter) }}" style="color: black">
+                        <a href="{{ route('responsible.edit', $responsible) }}" style="color: black">
                             <i class="far fa-edit" style="cursor: pointer;"></i>
                         </a>
                     </td>
                 @endcan
                 <td>
-                    <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">
+                    <form action="{{ route('responsible.destroy', $responsible) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>

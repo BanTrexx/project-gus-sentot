@@ -15,7 +15,7 @@ class ResponsibleRequest extends FormRequest
     {
         return [
             'coordinator_id' => 'required|int|exists:coordinators,id',
-            'nik' => 'required|string|unique:supporters',
+            'nik' => 'required|string|unique:responsibles',
         ];
     }
 }

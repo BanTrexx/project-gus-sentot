@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResponsibleRequest;
 use App\Models\Coordinator;
 use App\Models\Responsible;
 use App\Models\Supporter;
@@ -17,7 +18,7 @@ class ResponsibleController extends Controller
     public function index()
     {
         return view('pages.responsible.index', [
-            'supporters' => Responsible::all()
+            'responsibles' => Responsible::all()
         ]);
     }
 
@@ -34,14 +35,14 @@ class ResponsibleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ResponsibleRequest $request)
     {
         $dpt = DptUtils::find($request->get('nik'));
 
         if ($dpt != null) {
-            $tps = sprintf("TPS %s / %s, Kecamatan %s", $dpt->tps, $dpt->kelurahan, $dpt->kecamatan);
             $data = $request->validated();
             $data['name'] = $dpt->nama;
+            $data['address'] = $dpt->alamat;
             Responsible::create($data);
             return redirect('/responsible')->with('success', 'Data Penanggung Jawab Berhasil ditambahkan');
         } else {
@@ -62,10 +63,10 @@ class ResponsibleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Responsible $responsible)
     {
         return view('pages.responsible.edit', [
-            'supporter' => $supporter,
+            'responsible' => $responsible,
             'coordinators' => Coordinator::all()
         ]);
     }
@@ -75,8 +76,8 @@ class ResponsibleController extends Controller
      */
     public function update(Request $request, Responsible $responsible)
     {
-        $responsible->update($request->validated());
-        return redirect('/responsible')->with('success', 'Data Pendukung Berhasil diubah');
+        $responsible->update($request->all());
+        return redirect('/responsible')->with('success', 'Data Penanggung Jawab Berhasil diubah');
     }
 
     /**
@@ -85,6 +86,6 @@ class ResponsibleController extends Controller
     public function destroy(Responsible $responsible)
     {
         $responsible->delete();
-        return redirect('/responsible')->with('success', 'Data Pendukung Berhasil dihapus');
+        return redirect('/responsible')->with('success', 'Data Penanggung Jawab Berhasil dihapus');
     }
 }
