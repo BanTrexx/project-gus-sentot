@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Middleware\PermissionMiddleware;
 use App\Http\Requests\SupporterRequest;
 use App\Models\Coordinator;
+use App\Models\Responsible;
 use App\Models\Supporter;
 use App\Utils\DptUtils;
 use Illuminate\Contracts\Support\Renderable;
@@ -38,7 +39,7 @@ class SupporterController extends Controller
     public function create(): Renderable
     {
         return view('pages.supporter.create', [
-            'coordinators' => Coordinator::all()
+            'responsibles' => Responsible::all()
         ]);
     }
 
@@ -71,7 +72,7 @@ class SupporterController extends Controller
     {
         return view('pages.supporter.edit', [
             'supporter' => $supporter,
-            'coordinators' => Coordinator::all()
+            'responsibles' => Responsible::all()
         ]);
     }
 

@@ -12,8 +12,8 @@ class Supporter extends Model
 
     protected $guarded = [];
 
-    public function coordinator(): BelongsTo
+    public function responsible(): BelongsTo
     {
-        return $this->belongsTo(Coordinator::class);
+        return $this->belongsTo(Responsible::class);
     }
 }

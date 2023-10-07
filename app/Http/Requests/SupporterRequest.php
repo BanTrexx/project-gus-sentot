@@ -14,9 +14,9 @@ class SupporterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'coordinator_id' => 'required|int|exists:coordinators,id',
-            'nik' => 'required|string|unique:supporters',
-            'address' => 'required|string',
+            'responsible_id' => 'required|int|exists:responsibles,id',
+            'nik'            => 'required|string|unique:supporters',
+            'address'        => 'required|string',
         ];
     }
 }

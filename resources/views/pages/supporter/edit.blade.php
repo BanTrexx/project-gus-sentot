@@ -42,14 +42,14 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="coordinator_id">Koordinator</label>
-                <select class="form-control" id="coordinator_id" name="coordinator_id">
-                    <option value="null">-- silahkan pilih coordinator --</option>
-                    @foreach ($coordinators as $coordinator)
-                        @if(old('coordinator_id', $supporter->coordinator_id) == $coordinator->id)
-                            <option value="{{ $coordinator->id }}" selected>{{ $coordinator->name }}</option>
+                <label for="coordinator_id">Penanggung Jawab</label>
+                <select class="form-control" id="responsible_id" name="responsible_id">
+                    <option value="null">-- silahkan pilih penanggung jawab --</option>
+                    @foreach ($responsibles as $responsible)
+                        @if(old('coordinator_id', $supporter->responsible_id) == $responsible->id)
+                            <option value="{{ $responsible->id }}" selected>{{ $responsible->name }}</option>
                         @else
-                            <option value="{{ $coordinator->id }}">{{ $coordinator->name }}</option>
+                            <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>
                         @endif
                     @endforeach
                 </select>

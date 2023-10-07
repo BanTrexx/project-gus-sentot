@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Coordinator;
+use App\Models\Responsible;
 
 return new class extends Migration
 {
@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('supporters', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Coordinator::class);
+            $table->foreignIdFor(Responsible::class);
             $table->string('nik');
             $table->string('name');
             $table->string('address');
