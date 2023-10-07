@@ -74,9 +74,9 @@ class ResponsibleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Responsible $responsible)
+    public function update(ResponsibleRequest $request, Responsible $responsible)
     {
-        $responsible->update($request->all());
+        $responsible->update($request->validated());
         return redirect('/responsible')->with('success', 'Data Penanggung Jawab Berhasil diubah');
     }
 

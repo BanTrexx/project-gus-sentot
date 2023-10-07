@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ResponsibleRequest extends FormRequest
 {
@@ -15,7 +16,9 @@ class ResponsibleRequest extends FormRequest
     {
         return [
             'coordinator_id' => 'required|int|exists:coordinators,id',
-            'nik' => 'required|string|unique:responsibles',
+            'nik'            => ['required','string', Rule::unique('responsibles')->ignore($this->nik, 'nik')],
+            'name'           => 'sometimes|required|string',
+            'address'        => 'sometimes|required|string',
         ];
     }
 }
