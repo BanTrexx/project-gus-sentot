@@ -59,7 +59,7 @@
             <td class="py-1 border">{{ $loop->iteration }}</td>
             <td class="px-6 py-1 border">{{ $item->name }}</td>
             <td class="px-6 py-1 border">{{ $item->nik }}</td>
-            <td class="py-1 border"></td>
+            <td class="py-1 border">{{ $item->rt . " / " . $item->rw }}</td>
             <td class="py-1 border">{{ $item->dpt_tps }}</td>
             <td class="px-6 py-1 border"></td>
         </tr>

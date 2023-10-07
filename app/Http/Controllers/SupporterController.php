@@ -48,11 +48,15 @@ class SupporterController extends Controller
         $dpt = DptUtils::find($request->get('nik'));
 
         if ($dpt != null) {
+            preg_match('/RT\s+(\d{3})/i', $dpt->alamat, $matchesRt);
+            preg_match('/RW\s+(\d{3})/i', $dpt->alamat, $matchesRw);
             $tps = sprintf("TPS %s / %s, Kecamatan %s", $dpt->tps, $dpt->kelurahan, $dpt->kecamatan);
             $data = $request->validated();
             $data['dpt_tps'] = $tps;
             $data['name'] = $dpt->nama;
             $data['address'] = $dpt->alamat;
+            $data['rt'] = $matchesRt[1];
+            $data['rw'] = $matchesRw[1];
             Supporter::create($data);
             return redirect('/supporter')->with('success', 'Data Pendukung Berhasil ditambahkan');
         } else {
