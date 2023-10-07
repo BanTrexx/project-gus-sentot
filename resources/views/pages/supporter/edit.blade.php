@@ -46,7 +46,7 @@
                 <select class="form-control" id="responsible_id" name="responsible_id">
                     <option value="null">-- silahkan pilih penanggung jawab --</option>
                     @foreach ($responsibles as $responsible)
-                        @if(old('coordinator_id', $supporter->responsible_id) == $responsible->id)
+                        @if(old('responsible_id', $supporter->responsible_id) == $responsible->id)
                             <option value="{{ $responsible->id }}" selected>{{ $responsible->name }}</option>
                         @else
                             <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>

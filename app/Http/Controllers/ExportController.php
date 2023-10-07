@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coordinator;
+use App\Models\Responsible;
 use App\Models\Supporter;
 use App\Models\Village;
 use Illuminate\Http\Request;
@@ -12,21 +13,22 @@ class ExportController extends Controller
     public function exportVoterList(Request $request)
     {
         return view('pages.export.index', [
-            'coordinators' => Coordinator::all(),
+            'responsibles' => Responsible::all(),
         ]);
     }
 
     public function exportedVoterList(Request $request)
     {
-        $coordinator_id = $request->get('coordinator_id');
+        $responsible_id = $request->get('responsible_id');
 
-        $supporters = Supporter::query()->where('coordinator_id', $coordinator_id)->get();
-        $coordinator = Coordinator::query()->where('id', $coordinator_id)->first();
+        $supporters = Supporter::query()->where('responsible_id', $responsible_id)->get();
+        $responsible = Responsible::query()->where('id', $responsible_id)->first();
 
         $data = [
-            'district'    => $coordinator->village->district->name,
-            'village'     => $coordinator->village->name,
-            'coordinator' => $coordinator,
+            'district'    => $responsible->coordinator->village->district->name,
+            'village'     => $responsible->coordinator->village->name,
+            'coordinator' => $responsible->coordinator,
+            'responsible' => $responsible,
             'supporters'  => $supporters,
         ];
 
