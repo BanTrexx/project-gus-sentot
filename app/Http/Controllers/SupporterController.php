@@ -52,6 +52,7 @@ class SupporterController extends Controller
             $data = $request->validated();
             $data['dpt_tps'] = $tps;
             $data['name'] = $dpt->nama;
+            $data['address'] = $dpt->alamat;
             Supporter::create($data);
             return redirect('/supporter')->with('success', 'Data Pendukung Berhasil ditambahkan');
         } else {

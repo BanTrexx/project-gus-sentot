@@ -20,15 +20,6 @@
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
-
-            <div class="form-group">
-                <label for="address">Alamat</label>
-                <input type="text" class="form-control" id="address" name="address"
-                       placeholder="silahkan input alamat pendukung" required autofocus value="{{ old('address') }}">
-                @error('address')
-                <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
             <div class="form-group">
                 <label for="coordinator_id">Penanggung Jawab</label>
                 <select class="form-control" id="responsible_id" name="responsible_id">

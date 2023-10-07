@@ -16,7 +16,9 @@ class SupporterRequest extends FormRequest
         return [
             'responsible_id' => 'required|int|exists:responsibles,id',
             'nik'            => 'required|string|unique:supporters',
-            'address'        => 'required|string',
+            'address'        => 'sometimes|required|string',
+            'name'           => 'sometimes|required|string',
+            'dpt_tps'        => 'sometimes|required|string',
         ];
     }
 }
