@@ -47,7 +47,7 @@
                 <td>{{ $supporter->name }}</td>
                 <td>{{ $supporter->address }}</td>
                 <td>{{ $supporter->dpt_tps }}</td>
-                <td>{{ $supporter->responsible->name }}</td>
+                <td>{{ $supporter->responsible->name ?? '' }}</td>
                 @can('edit')
                     <td>
                         <a href="{{ route('supporter.edit', $supporter) }}" style="color: black">
