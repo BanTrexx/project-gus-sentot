@@ -22,17 +22,26 @@ class VillageController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+//     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
         return view('pages.village.index', [
             'villages' => Village::query()->chunkMap(function ($data) {
-                $supporterCount= $data->coordinators()->chunkMap(function ($coordinator) {
-                    return $coordinator->supporters()->count();
+//                $responsibleCount = $data->coordinators()->chunkMap(function ($coordinator) {
+//                    return $coordinator->responsibles()->count();
+//                })->toArray();
+
+                $supporterCountArray = $data->coordinators()->chunkMap(function ($coordinator) {
+                    return $coordinator->responsibles()->chunkMap(function ($responsible) {
+                        return $responsible->supporters->count();
+                    });
                 })->toArray();
 
+                $supporterCount = call_user_func_array("array_merge", $supporterCountArray);
+
                 $data->coordinator_count = $data->coordinators()->count();
+//                $data->responsible_count = array_sum($responsibleCount);
                 $data->supporter_count = array_sum($supporterCount);
                 return $data;
             })

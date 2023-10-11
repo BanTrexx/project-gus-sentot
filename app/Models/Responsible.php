@@ -16,4 +16,9 @@ class Responsible extends Model
     {
         return $this->belongsTo(Coordinator::class);
     }
+
+    public function supporters()
+    {
+        return $this->hasMany(Supporter::class);
+    }
 }
