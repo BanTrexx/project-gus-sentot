@@ -31,7 +31,7 @@
             <th scope="col">Nama</th>
             <th scope="col">Alamat</th>
             <th scope="col">DPT/TPS</th>
-            <th scope="col">Koordinator</th>
+            <th scope="col">Penanggung Jawab</th>
             @can('edit')
                 <th scope="col">Edit</th>
             @endcan
@@ -80,15 +80,10 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 
-    <script src="cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         let table = new DataTable('#myTable');
-    </script>
-
-    <script>
-        const myModal = document.getElementById('myModal')
-        myModal.addEventListener('shown.bs.modal')
     </script>
 @stop
