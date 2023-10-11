@@ -45,8 +45,6 @@ class CoordinatorController extends Controller
     {
         $validatedData = $request->validate([
             'nik' => 'required|max:16|unique:coordinators',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:8'
         ]);
 
         $dpt = DptUtils::find($request->get('nik'));
@@ -57,7 +55,6 @@ class CoordinatorController extends Controller
             $validatedData['name']       = $dpt->nama;
             $validatedData['address']    = $dpt->alamat;
             $validatedData['village_id'] = $village->id;
-            $validatedData['password']   = Hash::make($validatedData['password']);
 
             Coordinator::create($validatedData);
             return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
@@ -87,7 +84,6 @@ class CoordinatorController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'nik' => 'required|max:16',
-            'email' => 'required|email',
             'address' => 'required',
             'village_id' => 'required',
         ]);
