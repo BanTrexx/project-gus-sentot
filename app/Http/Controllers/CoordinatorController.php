@@ -44,17 +44,15 @@ class CoordinatorController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nik' => 'required|max:16|unique:coordinators',
+            'nik'        => 'required|max:16|unique:coordinators',
+            'village_id' => 'required|',
         ]);
 
         $dpt = DptUtils::find($request->get('nik'));
 
         if ($dpt != null) {
-            $village = Village::query()->where('name', 'like', "%$dpt->kelurahan%")->first();
-
             $validatedData['name']       = $dpt->nama;
             $validatedData['address']    = $dpt->alamat;
-            $validatedData['village_id'] = $village->id;
 
             Coordinator::create($validatedData);
             return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');

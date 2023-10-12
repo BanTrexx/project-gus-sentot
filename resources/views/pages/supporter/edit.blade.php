@@ -53,7 +53,7 @@
                         @endif
                     @endforeach
                 </select>
-                @error('coordinator_id')
+                @error('responsible_id')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
