@@ -15,9 +15,10 @@ return new class extends Migration
         Schema::create('coordinators', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Village::class)->nullable();
+            $table->string('nik')->nullable();
             $table->string('name');
-            $table->string('nik', $length=16);
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
             $table->timestamps();
