@@ -14,10 +14,22 @@
         @csrf
           <div class="form-group">
             <label for="nik">NIK</label>
-            <input type="number" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" required value="{{ old('nik') }}">
+            <input type="number" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" value="{{ old('nik') }}">
           </div>
           <div class="form-group">
-              <label for="coordinator_id">Desa</label>
+              <label for="nik">Nama <span style="color:#ff0000">*</span></label>
+              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name') }}">
+          </div>
+          <div class="form-group">
+              <label for="nik">Alamat</label>
+              <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}">
+          </div>
+          <div class="form-group">
+              <label for="nik">No. HP</label>
+              <input type="number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{ old('phone_number') }}">
+          </div>
+          <div class="form-group">
+              <label for="coordinator_id">Desa <span style="color:#ff0000">*</span></label>
               <select class="form-control" id="village_id" name="village_id">
                   <option value="null">-- silahkan pilih desa --</option>
                   @foreach ($villages as $village)

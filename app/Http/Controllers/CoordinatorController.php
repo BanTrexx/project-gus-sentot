@@ -44,29 +44,21 @@ class CoordinatorController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nik'        => 'required|max:16|unique:coordinators',
-            'village_id' => 'required|',
+            'nik'          => 'nullable|max:16',
+            'village_id'   => 'required|exists:villages,id',
+            'name'         => 'required|string',
+            'address'      => 'nullable|string',
+            'phone_number' => 'nullable|string',
         ]);
 
-        $dpt = DptUtils::find($request->get('nik'));
-
-        if ($dpt != null) {
-            $validatedData['name']       = $dpt->nama;
-            $validatedData['address']    = $dpt->alamat;
-
-            Coordinator::create($validatedData);
-            return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
-        } else {
-            throw ValidationException::withMessages([
-                'nik' => ['NIK tidak ditemukan'],
-            ]);
-        }
+        Coordinator::create($validatedData);
+        return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil ditambahkan');
     }
 
     public function destroy(Coordinator $coordinator)
     {
         $coordinator->delete();
-        return redirect('/coordinator')->with('success', 'Data Pendukung Berhasil dihapus');
+        return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil dihapus');
     }
 
     public function edit(Coordinator $coordinator)
@@ -80,15 +72,14 @@ class CoordinatorController extends Controller
     public function update(Request $request, Coordinator $coordinator)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'nik' => 'required|max:16',
-            'address' => 'required',
-            'village_id' => 'required',
+            'name'         => 'required|max:255',
+            'nik'          => 'nullable|max:16',
+            'address'      => 'nullable',
+            'village_id'   => 'required|exists:villages,id',
+            'phone_number' => 'nullable|string',
         ]);
 
-        Coordinator::where('id', $coordinator->id)
-                    ->update($validatedData);
-
+        Coordinator::where('id', $coordinator->id)->update($validatedData);
         return redirect('/coordinator')->with('success', 'Data Koordinator Berhasil diubah');
     }
 }

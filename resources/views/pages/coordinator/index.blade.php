@@ -28,6 +28,7 @@
             <th scope="col">Nama</th>
             <th scope="col">Desa</th>
             <th scope="col">Alamat</th>
+            <th scope="col">No. HP</th>
               @can('edit')
                   <th scope="col">Edit</th>
               @endcan
@@ -43,6 +44,7 @@
               <td>{{ $coordinator->name }}</td>
               <td>{{ $coordinator->village?->name }}</td>
               <td>{{ $coordinator->address }}</td>
+              <td>{{ $coordinator->phone_number }}</td>
                 @can('edit')
                     <td>
                         <a href="/coordinator/{{ $coordinator->id }}/edit" style="color: black">
