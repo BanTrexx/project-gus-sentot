@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('responsibles', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Coordinator::class);
-            $table->string('nik');
+            $table->string('nik')->nullable();
             $table->string('name');
             $table->string('address');
             $table->string('phone_number');
