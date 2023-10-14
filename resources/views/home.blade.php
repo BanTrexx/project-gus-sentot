@@ -34,15 +34,17 @@
             </div>
 
             <div class="col-12 col-sm-4 col-md-4">
-                <div class="info-box">
-                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Total Penduduk Sumobito</span>
-                        <span class="info-box-number">
-                            {{ $sumobitoCount }}
-                        </span>
+                <a href="" class="text-reset">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Total Penduduk Sumobito</span>
+                            <span class="info-box-number">
+                                {{ $sumobitoCount }}
+                            </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 
