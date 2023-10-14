@@ -17,10 +17,6 @@ class CoordinatorSeeder extends Seeder
         Coordinator::create([
             'village_id' => 1,
             'name' => 'Sukadi',
-            'nik' => 'sdjkfbsdjhfvdf',
-            'address' => 'kjsfbkdfds',
-            'email' => 'coordinator@example.com',
-            'password' => Hash::make('password')
         ]);
     }
 }
