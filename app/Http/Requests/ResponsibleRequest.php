@@ -16,9 +16,10 @@ class ResponsibleRequest extends FormRequest
     {
         return [
             'coordinator_id' => 'required|int|exists:coordinators,id',
-            'nik'            => ['required','string', Rule::unique('responsibles')->ignore($this->nik, 'nik')],
-            'name'           => 'sometimes|required|string',
-            'address'        => 'sometimes|required|string',
+            'nik'            => 'nullable|string',
+            'name'           => 'required|string',
+            'address'        => 'required|string',
+            'phone_number'   => 'required|string'
         ];
     }
 }

@@ -14,23 +14,30 @@
             @method('put')
             @csrf
             <div class="form-group">
-                <label for="name">Nama</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="silahkan input nama pendukung" required autofocus value="{{ old('name', $responsible->name) }}">
-                @error('name')
-                <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="form-group">
                 <label for="nik">NIK</label>
-                <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required autofocus value="{{ old('nik', $responsible->nik) }}">
+                <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" value="{{ old('nik', $responsible->nik) }}">
                 @error('nik')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" class="form-control @error('nik') is-invalid @enderror" id="name" name="name" required value="{{ old('name', $responsible->name) }}">
+                @error('name')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="address">Alamat</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat pendukung" required autofocus value="{{ old('address', $responsible->address) }}">
+                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" required value="{{ old('address', $responsible->address) }}">
                 @error('address')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="nik">No. HP</label>
+                <input type="number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" required value="{{ old('phone_number') }}">
+                @error('phone_number')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>

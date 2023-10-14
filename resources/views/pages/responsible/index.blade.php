@@ -26,6 +26,7 @@
             <th scope="col">NIK</th>
             <th scope="col">Nama</th>
             <th scope="col">Alamat</th>
+            <th scope="col">No. HP</th>
             <th scope="col">Koordinator</th>
             <th scope="col">Edit</th>
             <th scope="col">Hapus</th>
@@ -39,6 +40,7 @@
                 <td>{{ $responsible->nik }}</td>
                 <td>{{ $responsible->name }}</td>
                 <td>{{ $responsible->address }}</td>
+                <td>{{ $responsible->phone_number }}</td>
                 <td>{{ $responsible->coordinator->name }}</td>
                 @can('edit')
                     <td>

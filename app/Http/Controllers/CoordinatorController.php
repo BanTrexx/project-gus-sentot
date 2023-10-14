@@ -30,7 +30,7 @@ class CoordinatorController extends Controller
     public function index()
     {
         return view('pages.coordinator.index', [
-            'coordinators' => Coordinator::all()
+            'coordinators' => Coordinator::query()->latest()->get()
         ]);
     }
 

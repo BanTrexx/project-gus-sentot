@@ -18,7 +18,7 @@ class ResponsibleController extends Controller
     public function index()
     {
         return view('pages.responsible.index', [
-            'responsibles' => Responsible::all()
+            'responsibles' => Responsible::query()->latest()->get()
         ]);
     }
 
@@ -37,19 +37,8 @@ class ResponsibleController extends Controller
      */
     public function store(ResponsibleRequest $request)
     {
-        $dpt = DptUtils::find($request->get('nik'));
-
-        if ($dpt != null) {
-            $data = $request->validated();
-            $data['name'] = $dpt->nama;
-            $data['address'] = $dpt->alamat;
-            Responsible::create($data);
-            return redirect('/responsible')->with('success', 'Data Penanggung Jawab Berhasil ditambahkan');
-        } else {
-            throw ValidationException::withMessages([
-                'nik' => ['Data DPT Tidak Di temukan'],
-            ]);
-        }
+        Responsible::create($request->validated());
+        return redirect('/responsible')->with('success', 'Data Penanggung Jawab Berhasil ditambahkan');
     }
 
     /**

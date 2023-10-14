@@ -14,14 +14,37 @@
             @csrf
             <div class="form-group">
                 <label for="nik">NIK</label>
-                <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required
-                       autofocus value="{{ old('nik') }}">
+                <input type="number" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" value="{{ old('nik') }}">
                 @error('nik')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="coordinator_id">Koordinator</label>
+                <label for="nik">Nama</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required
+                       autofocus value="{{ old('name') }}">
+                @error('name')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="nik">Alamat</label>
+                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" required
+                       autofocus value="{{ old('address') }}">
+                @error('address')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="nik">No. HP</label>
+                <input type="number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" required
+                       autofocus value="{{ old('phone_number') }}">
+                @error('phone_number')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="">Koordinator</label>
                 <select class="form-control" id="coordinator_id" name="coordinator_id">
                     <option value="null">-- silahkan pilih coordinator --</option>
                     @foreach ($coordinators as $coordinator)
@@ -43,8 +66,15 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @stop
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#coordinator_id').select2();
+        });
+    </script>
 @stop
