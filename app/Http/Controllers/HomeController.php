@@ -28,12 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', [
-            'jogorotoChart' => $this->getStatistic(3517110),
-            'diwekChart' => $this->getStatistic(3517040),
-            'sumobitoChart' => $this->getStatistic(3517100),
-            'villageCount' => Village::count(),
-            'coordinatorCount' => Coordinator::count(),
-            'supporterCount' => Supporter::count(),
+            'jogorotoCount' => Supporter::query()->whereRelation('responsible.coordinator.village', 'district_id', 3517110)->count(),
+            'diwekCount'    => Supporter::query()->whereRelation('responsible.coordinator.village', 'district_id', 3517040)->count(),
+            'sumobitoCount' => Supporter::query()->whereRelation('responsible.coordinator.village', 'district_id', 3517100)->count(),
         ]);
     }
 
