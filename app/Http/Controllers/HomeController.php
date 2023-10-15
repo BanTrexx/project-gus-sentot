@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coordinator;
 use App\Models\District;
+use App\Models\Responsible;
 use App\Models\Supporter;
 use App\Models\Village;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
@@ -61,5 +62,15 @@ class HomeController extends Controller
     protected function randColor()
     {
         return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+    }
+
+    public function show($id)
+    {
+        return view('pages.dashboard-detail', [
+            'district'     => District::query()->where('id', $id)->first('name')->name ?? '',
+            'coordinators' => Coordinator::query()->latest()->get(),
+            'responsibles' => Responsible::query()->latest()->get(),
+            'supporters'   => Supporter::query()->latest()->get(),
+        ]);
     }
 }
