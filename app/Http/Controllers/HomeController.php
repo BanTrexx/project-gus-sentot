@@ -68,9 +68,9 @@ class HomeController extends Controller
     {
         return view('pages.dashboard-detail', [
             'district'     => District::query()->where('id', $id)->first('name')->name ?? '',
-            'coordinators' => Coordinator::query()->latest()->get(),
-            'responsibles' => Responsible::query()->latest()->get(),
-            'supporters'   => Supporter::query()->latest()->get(),
+            'coordinators' => Coordinator::query()->whereRelation('village', 'district_id', $id)->latest()->get(),
+            'responsibles' => Responsible::query()->whereRelation('coordinator.village', 'district_id', $id)->latest()->get(),
+            'supporters'   => Supporter::query()->whereRelation('responsible.coordinator.village', 'district_id', $id)->latest()->get(),
         ]);
     }
 }

@@ -10,31 +10,35 @@
     <div class="container-fluid pt-4 pb-3">
         <div class="row">
             <div class="col-12 col-sm-4 col-md-4">
-                <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Total Penduduk Jogoroto</span>
-                        <span class="info-box-number">
-                            {{ $jogorotoCount }}
-                        </span>
+                <a class="text-reset" href="{{ route('home.show', 3517110) }}">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Total Penduduk Jogoroto</span>
+                            <span class="info-box-number">
+                                {{ $jogorotoCount }}
+                            </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="col-12 col-sm-4 col-md-4">
-                <div class="info-box">
-                    <span class="info-box-icon bg-fuchsia elevation-1"><i class="fas fa-users"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Total Penduduk Diwek</span>
-                        <span class="info-box-number">
-                            {{ $diwekCount }}
-                        </span>
+                <a class="text-reset" href="{{ route('home.show', 3517040) }}">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-fuchsia elevation-1"><i class="fas fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Total Penduduk Diwek</span>
+                            <span class="info-box-number">
+                                {{ $diwekCount }}
+                            </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="col-12 col-sm-4 col-md-4">
-                <a href="" class="text-reset">
+                <a class="text-reset" href="{{ route('home.show', 3517100) }}">
                     <div class="info-box">
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
                         <div class="info-box-content">

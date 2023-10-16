@@ -3,7 +3,7 @@
 @section('title', 'Admin | Desa')
 
 @section('content_header')
-    <h1>Detail Kecamatan </h1>
+    <h1>Detail Kecamatan {{ ucfirst($district) }}</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Koordinator {{ $district }}</h3>
+                        <h3 class="card-title">Daftar Koordinator</h3>
                     </div>
                     <div class="card-body">
                         <table @if(count($coordinators) > 0) id="myTable" @endif class="table">
@@ -24,8 +24,6 @@
                                 <th scope="col">Desa</th>
                                 <th scope="col">Alamat</th>
                                 <th scope="col">No. HP</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Hapus</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,20 +36,6 @@
                                     <td>{{ $coordinator->village?->name }}</td>
                                     <td>{{ $coordinator->address }}</td>
                                     <td>{{ $coordinator->phone_number }}</td>
-                                    @can('edit')
-                                        <td>
-                                            <a href="/coordinator/{{ $coordinator->id }}/edit" style="color: black">
-                                                <i class="far fa-edit" style="cursor: pointer;"></i>
-                                            </a>
-                                        </td>
-                                    @endcan
-                                    <td>
-                                        <form action="{{ route('coordinator.destroy', $coordinator) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>
-                                        </form>
-                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -79,8 +63,6 @@
                                 <th scope="col">Alamat</th>
                                 <th scope="col">No. HP</th>
                                 <th scope="col">Koordinator</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Hapus</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -93,20 +75,6 @@
                                     <td>{{ $responsible->address }}</td>
                                     <td>{{ $responsible->phone_number }}</td>
                                     <td>{{ $responsible->coordinator->name }}</td>
-                                    @can('edit')
-                                        <td>
-                                            <a href="{{ route('responsible.edit', $responsible) }}" style="color: black">
-                                                <i class="far fa-edit" style="cursor: pointer;"></i>
-                                            </a>
-                                        </td>
-                                    @endcan
-                                    <td>
-                                        <form action="{{ route('responsible.destroy', $responsible) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>
-                                        </form>
-                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -134,8 +102,6 @@
                                 <th scope="col">Alamat</th>
                                 <th scope="col">DPT/TPS</th>
                                 <th scope="col">Penanggung Jawab</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Hapus</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -148,20 +114,6 @@
                                     <td>{{ $supporter->address }}</td>
                                     <td>{{ $supporter->dpt_tps }}</td>
                                     <td>{{ $supporter->responsible->name ?? '' }}</td>
-                                    @can('edit')
-                                        <td>
-                                            <a href="{{ route('supporter.edit', $supporter) }}" style="color: black">
-                                                <i class="far fa-edit" style="cursor: pointer;"></i>
-                                            </a>
-                                        </td>
-                                    @endcan
-                                    <td>
-                                        <form action="{{ route('supporter.destroy', $supporter) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="fas fa-trash" style="color: #ff0000; cursor: pointer; border:none; background:transparent;"></button>
-                                        </form>
-                                    </td>
                                 </tr>
                             @empty
                                 <tr>

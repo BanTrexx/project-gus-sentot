@@ -36,7 +36,7 @@ Route::get('/', function () {
 Route::middleware('auth.multiple')->group(function () {
     Route::prefix('home')->group(function () {
         Route::get('', [HomeController::class, 'index'])->name('home');
-        Route::get('{id}', [HomeController::class, 'show'])->name('show');
+        Route::get('{id}', [HomeController::class, 'show'])->name('home.show');
     });
 
     Route::resource('district', DistrictController::class);
