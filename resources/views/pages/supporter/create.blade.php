@@ -21,6 +21,30 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="phone_number">No. HP <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" required
+                       autofocus value="{{ old('phone_number') }}">
+                @error('phone_number')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="rt">RT <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="rt" name="rt" required
+                       autofocus value="{{ old('rt') }}">
+                @error('rt')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="rw">RW <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="rw" name="rw" required
+                       autofocus value="{{ old('rw') }}">
+                @error('rw')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="coordinator_id">Penanggung Jawab <span style="color:#ff0000">*</span></label>
                 <select class="form-control" id="responsible_id" name="responsible_id">
                     <option value="null">-- silahkan pilih penanggung jawab --</option>

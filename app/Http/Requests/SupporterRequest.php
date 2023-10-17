@@ -19,6 +19,9 @@ class SupporterRequest extends FormRequest
             'address'        => 'sometimes|required|string',
             'name'           => 'sometimes|required|string',
             'dpt_tps'        => 'sometimes|required|string',
+            'phone_number'   => 'required|string',
+            'rt'             => 'required|string',
+            'rw'             => 'required|string',
         ];
     }
 }

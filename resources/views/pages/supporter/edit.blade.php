@@ -22,8 +22,32 @@
             </div>
             <div class="form-group">
                 <label for="nik">NIK <span style="color:#ff0000">*</span></label>
-                <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required autofocus value="{{ old('nik', $supporter->nik) }}">
+                <input type="text" class="form-control" id="nik" name="nik" required autofocus value="{{ old('nik', $supporter->nik) }}">
                 @error('nik')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="phone_number">No. HP <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" required
+                       autofocus value="{{ old('phone_number', $supporter->phone_number) }}">
+                @error('phone_number')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="rt">RT <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="rt" name="rt" required
+                       autofocus value="{{ old('rt', $supporter->rt) }}">
+                @error('rt')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="rw">RW <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="rw" name="rw" required
+                       autofocus value="{{ old('rw',  $supporter->rw) }}">
+                @error('rw')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
