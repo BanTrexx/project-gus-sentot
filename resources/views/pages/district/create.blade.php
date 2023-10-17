@@ -13,7 +13,7 @@
         @csrf
         <div class="col-lg-6">
             <div class="form-group">
-              <label for="name">Nama Kecamatan</label>
+              <label for="name">Nama Kecamatan <span style="color:#ff0000">*</span></label>
               <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="silahkan input nama Kecamatan" name="name" required autofocus value="{{ old('name') }}">
               @error('name')
               <div class="invalid-feedback">{{ $message }}</div>
@@ -23,7 +23,7 @@
         </div>
     </form>
 
-    
+
 @stop
 
 @section('css')

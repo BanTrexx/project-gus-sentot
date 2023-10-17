@@ -14,35 +14,35 @@
             @method('put')
             @csrf
             <div class="form-group">
-                <label for="name">Nama Pendukung</label>
+                <label for="name">Nama Pendukung <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="silahkan input nama pendukung" required autofocus value="{{ old('name', $supporter->name) }}">
                 @error('name')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="nik">NIK</label>
+                <label for="nik">NIK <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required autofocus value="{{ old('nik', $supporter->nik) }}">
                 @error('nik')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="dpt_tps">DPT/TPS</label>
+                <label for="dpt_tps">DPT/TPS <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control" id="dpt_tps" name="dpt_tps" placeholder="silahkan input DPT/TPS" required autofocus value="{{ old('dpt_tps', $supporter->dpt_tps) }}">
                 @error('dpt_tps')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="address">Alamat</label>
+                <label for="address">Alamat <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat pendukung" required autofocus value="{{ old('address', $supporter->address) }}">
                 @error('address')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="coordinator_id">Penanggung Jawab</label>
+                <label for="coordinator_id">Penanggung Jawab <span style="color:#ff0000">*</span></label>
                 <select class="form-control" id="responsible_id" name="responsible_id">
                     <option value="null">-- silahkan pilih penanggung jawab --</option>
                     @foreach ($responsibles as $responsible)

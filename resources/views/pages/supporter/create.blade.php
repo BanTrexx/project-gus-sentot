@@ -13,7 +13,7 @@
         <form method="post" action="/supporter">
             @csrf
             <div class="form-group">
-                <label for="nik">NIK</label>
+                <label for="nik">NIK <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required
                        autofocus value="{{ old('nik') }}">
                 @error('nik')
@@ -21,7 +21,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="coordinator_id">Penanggung Jawab</label>
+                <label for="coordinator_id">Penanggung Jawab <span style="color:#ff0000">*</span></label>
                 <select class="form-control" id="responsible_id" name="responsible_id">
                     <option value="null">-- silahkan pilih penanggung jawab --</option>
                     @foreach ($responsibles as $responsible)

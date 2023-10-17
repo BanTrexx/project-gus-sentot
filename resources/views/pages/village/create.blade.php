@@ -13,11 +13,11 @@
       <form method="post" action="/village">
         @csrf
           <div class="form-group">
-            <label for="name">Nama Desa</label>
+            <label for="name">Nama Desa <span style="color:#ff0000">*</span></label>
             <input type="text" class="form-control" id="name" name="name" placeholder="silahkan input nama desa" required autofocus value="{{ old('name') }}">
           </div>
           <div class="form-group">
-              <label for="district_id">Kecamatan</label>
+              <label for="district_id">Kecamatan <span style="color:#ff0000">*</span></label>
               <select class="form-control" id="district_id" name="district_id">
                 <option value="null">-- silahkan pilih kecamatan --</option>
                 @foreach ($districts as $district)
@@ -31,7 +31,7 @@
           </div>
           <button type="submit" class="btn btn-primary">Tambah Desa</button>
       </form>
-    </div>   
+    </div>
 @stop
 
 @section('css')
