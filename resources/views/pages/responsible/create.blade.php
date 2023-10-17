@@ -20,7 +20,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="nik">Nama</label>
+                <label for="nik">Nama <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required
                        autofocus value="{{ old('name') }}">
                 @error('name')
@@ -28,7 +28,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="nik">Alamat</label>
+                <label for="nik">Alamat <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" required
                        autofocus value="{{ old('address') }}">
                 @error('address')
@@ -36,7 +36,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="nik">No. HP</label>
+                <label for="nik">No. HP <span style="color:#ff0000">*</span></label>
                 <input type="number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" required
                        autofocus value="{{ old('phone_number') }}">
                 @error('phone_number')
@@ -44,7 +44,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="">Koordinator</label>
+                <label for="">Koordinator <span style="color:#ff0000">*</span></label>
                 <select class="form-control" id="coordinator_id" name="coordinator_id">
                     <option value="null">-- silahkan pilih coordinator --</option>
                     @foreach ($coordinators as $coordinator)

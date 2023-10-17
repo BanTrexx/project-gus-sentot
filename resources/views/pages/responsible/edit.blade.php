@@ -21,28 +21,28 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="name">Nama</label>
+                <label for="name">Nama <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control @error('nik') is-invalid @enderror" id="name" name="name" required value="{{ old('name', $responsible->name) }}">
                 @error('name')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="address">Alamat</label>
+                <label for="address">Alamat <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" required value="{{ old('address', $responsible->address) }}">
                 @error('address')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="nik">No. HP</label>
+                <label for="nik">No. HP <span style="color:#ff0000">*</span></label>
                 <input type="number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" required value="{{ old('phone_number') }}">
                 @error('phone_number')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="coordinator_id">Koordinator</label>
+                <label for="coordinator_id">Koordinator <span style="color:#ff0000">*</span></label>
                 <select class="form-control" id="coordinator_id" name="coordinator_id">
                     <option value="null">-- silahkan pilih coordinator --</option>
                     @foreach ($coordinators as $coordinator)
