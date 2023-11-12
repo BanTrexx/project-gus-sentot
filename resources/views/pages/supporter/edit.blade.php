@@ -36,6 +36,13 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="address">Alamat <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat pendukung" required autofocus value="{{ old('address', $supporter->address) }}">
+                @error('address')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="rt">RT <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control" id="rt" name="rt" required
                        autofocus value="{{ old('rt', $supporter->rt) }}">
@@ -55,13 +62,6 @@
                 <label for="dpt_tps">DPT/TPS <span style="color:#ff0000">*</span></label>
                 <input type="text" class="form-control" id="dpt_tps" name="dpt_tps" placeholder="silahkan input DPT/TPS" required autofocus value="{{ old('dpt_tps', $supporter->dpt_tps) }}">
                 @error('dpt_tps')
-                <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="address">Alamat <span style="color:#ff0000">*</span></label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="silahkan input alamat pendukung" required autofocus value="{{ old('address', $supporter->address) }}">
-                @error('address')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>

@@ -45,22 +45,8 @@ class SupporterController extends Controller
 
     public function store(SupporterRequest $request)
     {
-        $dpt = DptUtils::find($request->get('nik'));
-
-        if ($dpt != null) {
-            $tps = sprintf("TPS %s / %s, Kecamatan %s", $dpt->tps, $dpt->kelurahan, $dpt->kecamatan);
-            $data = $request->validated();
-            $data['dpt_tps'] = $tps;
-            $data['name'] = $dpt->nama;
-            $data['address'] = $dpt->alamat;
-            Supporter::create($data);
-            return redirect('/supporter')->with('success', 'Data Pendukung Berhasil ditambahkan');
-        } else {
-            throw ValidationException::withMessages([
-                'nik' => ['Data DPT Tidak Di temukan'],
-            ]);
-        }
-
+        Supporter::create($request->validated());
+        return redirect('/supporter')->with('success', 'Data Pendukung Berhasil ditambahkan');
     }
 
     public function destroy(Supporter $supporter)

@@ -13,8 +13,16 @@
         <form method="post" action="/supporter">
             @csrf
             <div class="form-group">
+                <label for="nik">Nama Pendukung <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="name" name="name" required
+                       autofocus value="{{ old('name') }}">
+                @error('name')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="nik">NIK <span style="color:#ff0000">*</span></label>
-                <input type="text" class="form-control" id="nik" name="nik" placeholder="silahkan input NIK" required
+                <input type="text" class="form-control" id="nik" name="nik" required
                        autofocus value="{{ old('nik') }}">
                 @error('nik')
                 <span class="text-danger">{{ $message }}</span>
@@ -25,6 +33,14 @@
                 <input type="text" class="form-control" id="phone_number" name="phone_number" required
                        autofocus value="{{ old('phone_number') }}">
                 @error('phone_number')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="nik">Alamat <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="address" name="address" required
+                       autofocus value="{{ old('address') }}">
+                @error('address')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
@@ -41,6 +57,14 @@
                 <input type="text" class="form-control" id="rw" name="rw" required
                        autofocus value="{{ old('rw') }}">
                 @error('rw')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="rw">DPT/TPS <span style="color:#ff0000">*</span></label>
+                <input type="text" class="form-control" id="dpt_tps" name="dpt_tps" required
+                       autofocus value="{{ old('dpt_tps') }}">
+                @error('dpt_tps')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
