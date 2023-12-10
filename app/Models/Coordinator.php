@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ClearsResponseCache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Coordinator extends Authenticatable
 {
-    use HasFactory, HasRoles, HasPermissions;
+    use HasFactory, HasRoles, HasPermissions, ClearsResponseCache;
 
     protected $guard_name = 'web';
 

@@ -40,10 +40,14 @@ Route::middleware('auth.multiple')->group(function () {
     });
 
     Route::resource('district', DistrictController::class);
-    Route::resource('village', VillageController::class);
-    Route::resource('coordinator', CoordinatorController::class);
-    Route::resource('supporter', SupporterController::class);
-    Route::resource('responsible', ResponsibleController::class);
+    Route::resource('village', VillageController::class)->only('index')->middleware('cache.response');
+    Route::resource('village', VillageController::class)->except('index');
+    Route::resource('coordinator', CoordinatorController::class)->only('index')->middleware('cache.response');
+    Route::resource('coordinator', CoordinatorController::class)->except('index');
+    Route::resource('supporter', SupporterController::class)->only('index')->middleware('cache.response');
+    Route::resource('supporter', SupporterController::class)->except('index');
+    Route::resource('responsible', ResponsibleController::class)->only('index')->middleware('cache.response');
+    Route::resource('responsible', ResponsibleController::class)->except('index');
 
     Route::get('export/voter-list', [ExportController::class, 'exportVoterList'])->name('export.voter-list.index');
     Route::post('export/voter-list', [ExportController::class, 'exportedVoterList'])->name('export.voter-list.store');
