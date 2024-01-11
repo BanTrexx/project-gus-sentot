@@ -26,26 +26,24 @@ class VillageController extends Controller
      */
     public function index()
     {
-        return view('pages.village.index', [
-            'villages' => Village::query()->chunkMap(function ($data) {
-//                $responsibleCount = $data->coordinators()->chunkMap(function ($coordinator) {
-//                    return $coordinator->responsibles()->count();
-//                })->toArray();
+        $villages = Village::paginate(10);
 
-                $supporterCountArray = $data->coordinators()->chunkMap(function ($coordinator) {
-                    return $coordinator->responsibles()->chunkMap(function ($responsible) {
-                        return $responsible->supporters->count();
-                    });
-                })->toArray();
+        $villages->getCollection()->transform(function ($data) {
+            $supporterCountArray = $data->coordinators()->get()->map(function ($coordinator) {
+                return $coordinator->responsibles()->get()->map(function ($responsible) {
+                    return $responsible->supporters->count();
+                });
+            })->flatten()->toArray();
 
-                $supporterCount = call_user_func_array("array_merge", $supporterCountArray);
+            $supporterCount = array_sum($supporterCountArray);
 
-                $data->coordinator_count = $data->coordinators()->count();
-//                $data->responsible_count = array_sum($responsibleCount);
-                $data->supporter_count = array_sum($supporterCount);
-                return $data;
-            })
-        ]);
+            $data->coordinator_count = $data->coordinators()->count();
+            $data->supporter_count = $supporterCount;
+
+            return $data;
+        });
+
+        return view('pages.village.index', compact('villages'));
     }
 
     public function create()

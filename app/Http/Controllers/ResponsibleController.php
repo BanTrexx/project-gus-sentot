@@ -18,7 +18,7 @@ class ResponsibleController extends Controller
     public function index()
     {
         return view('pages.responsible.index', [
-            'responsibles' => Responsible::query()->latest()->get()
+            'responsibles' => Responsible::latest()->paginate(10)
         ]);
     }
 

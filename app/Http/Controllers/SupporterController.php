@@ -32,7 +32,7 @@ class SupporterController extends Controller
     public function index(): Renderable
     {
         return view('pages.supporter.index', [
-            'supporters' => Supporter::all()
+            'supporters' => Supporter::paginate(10)
         ]);
     }
 

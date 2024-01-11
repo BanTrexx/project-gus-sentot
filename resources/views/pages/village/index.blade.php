@@ -24,7 +24,7 @@
                             </div>
                         @endif
 
-                        <table @if(count($villages) > 0) id="myTable" @endif class="table">
+                        <table class="table">
                             <thead class="thead-dark">
                             <tr>
                                 <th scope="col">No</th>
@@ -69,6 +69,10 @@
                             @endforelse
                             </tbody>
                         </table>
+
+                        <div class="mt-2 d-flex justify-content-end">
+                            {!! $villages->links('pagination::bootstrap-5') !!}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,15 +82,8 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 @stop
 
 @section('js')
     <script> console.log('Hi!'); </script>
-
-    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
 @stop

@@ -39,7 +39,8 @@ Route::middleware('auth.multiple')->group(function () {
         Route::get('{id}', [HomeController::class, 'show'])->name('home.show');
     });
 
-    Route::resource('district', DistrictController::class);
+    Route::resource('district', DistrictController::class)->only('index')->middleware('cache.response');
+    Route::resource('district', DistrictController::class)->except('index');
     Route::resource('village', VillageController::class)->only('index')->middleware('cache.response');
     Route::resource('village', VillageController::class)->except('index');
     Route::resource('coordinator', CoordinatorController::class)->only('index')->middleware('cache.response');
