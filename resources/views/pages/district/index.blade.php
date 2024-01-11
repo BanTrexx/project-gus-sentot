@@ -36,7 +36,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @php($no = 1)
+                            @php
+                                $no = ($districts->currentPage() - 1) * $districts->perPage() + 1;
+                            @endphp
                             @forelse ($districts as $district)
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>

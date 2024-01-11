@@ -39,7 +39,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @php($no = 1)
+                            @php
+                                $no = ($villages->currentPage() - 1) * $villages->perPage() + 1;
+                            @endphp
                             @forelse ($villages as $village)
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>

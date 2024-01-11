@@ -44,7 +44,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @php($no = 1)
+                            @php
+                                $no = ($supporters->currentPage() - 1) * $supporters->perPage() + 1;
+                            @endphp
                             @forelse ($supporters as $supporter)
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>

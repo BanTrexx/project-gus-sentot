@@ -38,7 +38,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @php($no = 1)
+                            @php
+                                $no = ($responsibles->currentPage() - 1) * $responsibles->perPage() + 1;
+                            @endphp
                             @forelse ($responsibles as $responsible)
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>

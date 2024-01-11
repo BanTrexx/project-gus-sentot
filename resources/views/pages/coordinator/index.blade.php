@@ -40,7 +40,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @php($no = 1)
+                            @php
+                                $no = ($coordinators->currentPage() - 1) * $coordinators->perPage() + 1;
+                            @endphp
                             @forelse ($coordinators as $coordinator)
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
